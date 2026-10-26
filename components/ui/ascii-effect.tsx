@@ -227,6 +227,8 @@ const RAIN = "ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆ
 const BAYER4 = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5]
 const BRAILLE = [0, 4, 6, 2, 5, 1, 7, 3]
 const MONO = 'ui-monospace, "Courier New", monospace'
+// Device pixels a canvas may hold; a full-screen effect lowers its pixel ratio to stay under it.
+const PIXEL_BUDGET = 2_400_000
 // Marching-squares edge pairs (0 top, 1 right, 2 bottom, 3 left) per corner code.
 const MARCH: number[][] = [[], [3, 2], [2, 1], [3, 1], [0, 1], [0, 1, 3, 2], [0, 2], [0, 3], [0, 3], [0, 2], [0, 3, 2, 1], [0, 1], [3, 1], [2, 1], [3, 2], []]
 
@@ -331,11 +333,19 @@ type Setup = {
   tmp2: HTMLCanvasElement
   t2ctx: CanvasRenderingContext2D
   snap: HTMLCanvasElement
+  /** Quarter-size buffer the bloom is blurred in. */
+  bloom: HTMLCanvasElement
+  bloomCtx: CanvasRenderingContext2D
   sctx: CanvasRenderingContext2D
   chans: [HTMLCanvasElement, HTMLCanvasElement, HTMLCanvasElement]
   grain: HTMLCanvasElement[]
   scan: HTMLCanvasElement
   dotScreen: HTMLCanvasElement
+  /** Dither: one pixel per dot, scaled up in one blit, then the gaps cut out. */
+  dots: HTMLCanvasElement
+  dotsCtx: CanvasRenderingContext2D
+  dotData: ImageData
+  gapTile: HTMLCanvasElement
   /** Adjusted cell colours (r, g, b per cell), their luminance, and the halves for halfblocks. */
   rgbs: Float32Array
   lum: Float32Array
@@ -357,11 +367,20 @@ function parsePosition(position: string): [number, number] {
   return [one(parts[0]), one(parts[1] ?? parts[0])]
 }
 
-function build(img: HTMLImageElement, cssW: number, cssH: number, p: AsciiParams, position: string): Setup {
-  const dpr = Math.min(window.devicePixelRatio || 1, 2)
+/** Canvas pixels per CSS pixel: the screen's own ratio divided by a whole number, so a canvas
+ * scaled down for the budget or for speed (`down`) still lands on crisp device pixels. */
+function pixelRatio(cssW: number, cssH: number, down: number) {
+  const native = window.devicePixelRatio || 1
+  const fit = Math.min(native, 2, Math.sqrt(PIXEL_BUDGET / Math.max(1, cssW * cssH)))
+  return native / (Math.ceil(native / fit - 1e-6) + down)
+}
+
+function build(img: HTMLImageElement, cssW: number, cssH: number, p: AsciiParams, position: string, down = 0): Setup {
+  const dpr = pixelRatio(cssW, cssH, down)
   const W = Math.max(1, Math.round(cssW * dpr))
   const H = Math.max(1, Math.round(cssH * dpr))
-  const cs = Math.max(2, p.cellSize * dpr)
+  // A whole number of device pixels per dither dot (four dots per cell side).
+  const cs = Math.max(4, Math.round((p.cellSize * dpr) / 4) * 4)
   const cols = Math.max(1, Math.ceil(W / cs))
   const rows = Math.max(1, Math.ceil(H / cs))
 
@@ -457,10 +476,21 @@ function build(img: HTMLImageElement, cssW: number, cssH: number, p: AsciiParams
   dc.arc(step / 2, step / 2, step * 0.36, 0, Math.PI * 2)
   dc.fill()
 
+  const dots = makeCanvas(cols * 4, rows * 4)
+  const dotsCtx = context(dots)
+  const d4 = cs / 4
+  const gap = Math.max(1, Math.round(d4 * 0.14))
+  const gapTile = makeCanvas(d4, d4)
+  const gt = context(gapTile)
+  gt.fillStyle = "#000"
+  gt.fillRect(d4 - gap, 0, gap, d4)
+  gt.fillRect(0, d4 - gap, d4, gap)
+
   const layer = makeCanvas(W, H)
   const tmp = makeCanvas(W, H)
   const tmp2 = makeCanvas(W, H)
   const snap = makeCanvas(W, H)
+  const bloom = makeCanvas(Math.ceil(W / 4), Math.ceil(H / 4))
   return {
     W,
     H,
@@ -477,11 +507,17 @@ function build(img: HTMLImageElement, cssW: number, cssH: number, p: AsciiParams
     tmp2,
     t2ctx: context(tmp2),
     snap,
+    bloom,
+    bloomCtx: context(bloom),
     sctx: context(snap),
     chans: [makeCanvas(W, H), makeCanvas(W, H), makeCanvas(W, H)],
     grain,
     scan,
     dotScreen,
+    dots,
+    dotsCtx,
+    dotData: dotsCtx.createImageData(cols * 4, rows * 4),
+    gapTile,
     rgbs,
     lum,
     top,
@@ -564,13 +600,9 @@ function drawCell(c: CanvasRenderingContext2D, mode: AsciiRenderMode, cell: Cell
       c.fillText(ch, cx, cy)
       return
     }
-    case "dither": {
-      const d = s / 4
-      c.fillStyle = ink
-      for (let sy = 0; sy < 4; sy++)
-        for (let sx = 0; sx < 4; sx++) if (v > (BAYER4[sy * 4 + sx] + 0.5) / 16) c.fillRect(x + sx * d, y + sy * d, d * 0.86, d * 0.86)
+    case "dither":
+      // Drawn in bulk by drawCells (see ditherCell).
       return
-    }
     case "mosaic": {
       const gap = Math.max(1, s * 0.06)
       c.fillStyle = rgb(r, g, b, k)
@@ -914,6 +946,8 @@ function drawCells(st: Setup, p: AsciiParams, t: number) {
   const cover = p.coverage / 100
   const emph = p.edgeEmphasis / 100
   const dens = 1 + p.density / 100
+  const dither = p.renderMode === "dither"
+  if (dither) st.dotData.data.fill(0)
   for (let j = 0; j < rows; j++) {
     for (let i = 0; i < cols; i++) {
       if (cover < 1 && hash(i, j, 7) > cover) continue
@@ -931,7 +965,41 @@ function drawCells(st: Setup, p: AsciiParams, t: number) {
       let v = base + st.edge[n] * emph
       if (p.animated) v = animate(p.animStyle, v, i, j, cols, rows, tt, amp)
       v = clamp(v * dens)
-      drawCell(c, p.renderMode, { x: i * s, y: j * s, s, v, base, r, g, b, i, j }, st, p, chars, tt, t)
+      if (dither) ditherCell(st, i, j, v, r, g, b)
+      else drawCell(c, p.renderMode, { x: i * s, y: j * s, s, v, base, r, g, b, i, j }, st, p, chars, tt, t)
+    }
+  }
+  if (dither) {
+    st.dotsCtx.putImageData(st.dotData, 0, 0)
+    c.imageSmoothingEnabled = false
+    c.drawImage(st.dots, 0, 0, cols * s, rows * s)
+    c.imageSmoothingEnabled = true
+    const gaps = c.createPattern(st.gapTile, "repeat")
+    if (gaps) {
+      c.globalCompositeOperation = "destination-out"
+      c.fillStyle = gaps
+      c.fillRect(0, 0, st.W, st.H)
+      c.globalCompositeOperation = "source-over"
+    }
+  }
+}
+
+/** A cell as a 4×4 ordered-dither block, one pixel per dot. */
+function ditherCell(st: Setup, i: number, j: number, v: number, r: number, g: number, b: number) {
+  const data = st.dotData.data
+  const k = 0.55 + 0.6 * v
+  const R = byte(r * k)
+  const G = byte(g * k)
+  const B = byte(b * k)
+  const row = st.cols * 4
+  for (let sy = 0; sy < 4; sy++) {
+    let o = ((j * 4 + sy) * row + i * 4) * 4
+    for (let sx = 0; sx < 4; sx++, o += 4) {
+      if (v <= (BAYER4[sy * 4 + sx] + 0.5) / 16) continue
+      data[o] = R
+      data[o + 1] = G
+      data[o + 2] = B
+      data[o + 3] = 255
     }
   }
 }
@@ -1061,12 +1129,16 @@ function postFx(ctx: CanvasRenderingContext2D, st: Setup, p: AsciiParams, t: num
   const I = (key: AsciiPostFx) => fx[key].intensity / 100
 
   if (on("bloom")) {
-    snapshot(ctx, st)
-    ctx.filter = `blur(${(4 + I("bloom") * 10) * dpr}px) brightness(1.25)`
+    // Blurred at a quarter of the size: the same glow for a sixteenth of the pixels.
+    const b = st.bloomCtx
+    const { width: bw, height: bh } = st.bloom
+    b.clearRect(0, 0, bw, bh)
+    b.filter = `blur(${((4 + I("bloom") * 10) * dpr) / 4}px) brightness(1.25)`
+    b.drawImage(ctx.canvas, 0, 0, bw, bh)
+    b.filter = "none"
     ctx.globalCompositeOperation = "screen"
     ctx.globalAlpha = I("bloom") * 0.85
-    ctx.drawImage(st.snap, 0, 0)
-    ctx.filter = "none"
+    ctx.drawImage(st.bloom, 0, 0, W, H)
     ctx.globalAlpha = 1
     ctx.globalCompositeOperation = "source-over"
   }
@@ -1272,6 +1344,12 @@ export function AsciiEffect({ src, alt, params, position = "50% 50%", fps = 30, 
     let st: Setup | null = null
     let raf = 0
     let last = -Infinity
+    // Adaptive quality: when frames keep arriving well behind `fps`, the canvas
+    // steps down to the next whole-number resolution instead of stuttering.
+    let down = 0
+    let prev = 0
+    let ema = 0
+    let samples = 0
     let visible = true
     let alive = true
     const start = performance.now()
@@ -1292,6 +1370,16 @@ export function AsciiEffect({ src, alt, params, position = "50% 50%", fps = 30, 
       raf = 0
       if (!alive || !visible) return
       if (now - last >= 1000 / fps) {
+        if (prev) {
+          ema = samples ? ema * 0.9 + (now - prev) * 0.1 : now - prev
+          samples++
+          const { width, height } = wrap.getBoundingClientRect()
+          if (samples > 30 && ema > 1600 / fps && pixelRatio(width, height, down + 1) >= 0.3) {
+            down++
+            setup()
+          }
+        }
+        prev = now
         last = now
         draw(now)
       }
@@ -1300,14 +1388,20 @@ export function AsciiEffect({ src, alt, params, position = "50% 50%", fps = 30, 
     const kick = () => {
       if (!raf && alive && visible) raf = requestAnimationFrame(loop)
     }
+    const resetTiming = () => {
+      prev = 0
+      ema = 0
+      samples = 0
+    }
     const setup = () => {
       if (!img.naturalWidth) return
       const { width, height } = wrap.getBoundingClientRect()
       if (width < 2 || height < 2) return
-      st = build(img, width, height, p, position)
+      st = build(img, width, height, p, position, down)
       canvas.width = st.W
       canvas.height = st.H
       last = -Infinity
+      resetTiming()
       kick()
     }
 
@@ -1319,7 +1413,10 @@ export function AsciiEffect({ src, alt, params, position = "50% 50%", fps = 30, 
     ro.observe(wrap)
     const io = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting
-      if (visible) kick()
+      if (visible) {
+        resetTiming()
+        kick()
+      }
     })
     io.observe(wrap)
 
@@ -1334,7 +1431,7 @@ export function AsciiEffect({ src, alt, params, position = "50% 50%", fps = 30, 
 
   return (
     <div ref={wrapRef} role="img" aria-label={alt} className={cn("relative overflow-hidden", className)}>
-      <canvas ref={canvasRef} aria-hidden className="absolute inset-0 block size-full" />
+      <canvas ref={canvasRef} aria-hidden className="absolute inset-0 block size-full [image-rendering:pixelated]" />
     </div>
   )
 }

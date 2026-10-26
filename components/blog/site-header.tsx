@@ -9,12 +9,11 @@ export type TocItem = { n: number; label: string; href: string }
 /**
  * L'en-tête de free-game.virgilabloh.com : texte d'intro en Courier, logo qui
  * tourne, et le sommaire « de A à Z » en bleu. Collé en haut sur les grands
- * écrans, il s'efface quand le pied de page arrive.
+ * écrans, il s'efface devant les zones plein écran et le pied de page.
  */
 export function SiteHeader({ intro, wordmark, items }: { intro: readonly string[]; wordmark: string; items: TocItem[] }) {
   const ref = React.useRef<HTMLElement>(null)
   const fill = React.useRef<HTMLSpanElement>(null)
-  const [hidden, setHidden] = React.useState(false)
   const rows = Math.ceil(items.length / 2)
 
   // Hauteur de l'en-tête → --header-h, pour les ancres et les éléments collants.
@@ -50,20 +49,12 @@ export function SiteHeader({ intro, wordmark, items }: { intro: readonly string[
     }
   }, [])
 
-  // Le pied de page a besoin de tout l'écran : l'en-tête se retire.
-  React.useEffect(() => {
-    const footer = document.getElementById("site-footer")
-    if (!footer) return
-    const io = new IntersectionObserver(([entry]) => setHidden(entry.isIntersecting), { threshold: 0.12 })
-    io.observe(footer)
-    return () => io.disconnect()
-  }, [])
-
   return (
+    // Les zones plein écran et le pied de page posent <html data-covered> :
+    // l'en-tête se retire pour leur laisser tout l'écran.
     <header
       ref={ref}
-      data-hidden={hidden}
-      className="z-50 bg-white transition-transform duration-500 ease-[cubic-bezier(.65,0,.2,1)] tall:sticky tall:top-0 tall:data-[hidden=true]:-translate-y-full"
+      className="z-50 bg-white transition-transform duration-500 ease-[cubic-bezier(.65,0,.2,1)] tall:sticky tall:top-0 tall:[html[data-covered]_&]:-translate-y-full"
     >
       <a
         href="#contenu"

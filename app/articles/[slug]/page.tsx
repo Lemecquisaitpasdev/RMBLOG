@@ -44,7 +44,7 @@ export default async function ArticlePage({ params }: PageProps<"/articles/[slug
           index.php
         </Link>{" "}
         ›{" "}
-        <Link href="/#archives" className="retro-link">
+        <Link href="/#sommaire" className="retro-link">
           articles
         </Link>{" "}
         › ?id={post.id}
@@ -125,9 +125,6 @@ export default async function ArticlePage({ params }: PageProps<"/articles/[slug
             ) : null}
             <Link href="/#sommaire" className="win-btn">
               Sommaire
-            </Link>
-            <Link href="/#livre-dor" className="win-btn">
-              Livre d&apos;or
             </Link>
             {next ? (
               <Link href={`/articles/${next.slug}`} className="win-btn font-bold" title={next.title}>

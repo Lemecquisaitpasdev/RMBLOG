@@ -1,4 +1,5 @@
 import WildHuntFooter from "@/components/ui/wild-hunt-footer"
+import { CoverSection } from "@/components/blog/cover-section"
 import { site } from "@/lib/site"
 
 const SANS = '"Helvetica Neue", Helvetica, Arial, sans-serif'
@@ -7,7 +8,7 @@ const MONO = '"Courier New", Courier, monospace'
 /** Le pied de page : le composant Wild Hunt, réglé pour le carnet. */
 export function SiteFooter() {
   return (
-    <div id="site-footer">
+    <CoverSection as="div" id="site-footer" threshold={0.12}>
       <WildHuntFooter
         wordmark={site.wordmark}
         tagline="Écrit à la main · publié sans algorithme · archivé pour dans dix ans"
@@ -17,16 +18,15 @@ export function SiteFooter() {
             title: "Lire",
             links: [
               { label: "Sommaire", href: "/#sommaire" },
-              { label: "Archives", href: "/#archives" },
+              { label: "Introduction", href: "/#introduction" },
               { label: "Flux RSS", href: "/feed.xml" },
             ],
           },
           {
-            title: "Carnet",
+            title: "Images",
             links: [
-              { label: "Introduction", href: "/#introduction" },
-              { label: "Livre d'or", href: "/#livre-dor" },
-              { label: "À propos", href: "/#a-propos" },
+              { label: "Les Benjamins", href: "/#benjamins" },
+              { label: "La Kaaba", href: "/#kaaba" },
             ],
           },
           { title: "Ailleurs", links: site.social.map((s) => ({ ...s })) },
@@ -43,6 +43,6 @@ export function SiteFooter() {
         fontFamily={SANS}
         monoFamily={MONO}
       />
-    </div>
+    </CoverSection>
   )
 }

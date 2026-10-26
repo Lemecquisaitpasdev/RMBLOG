@@ -82,7 +82,7 @@ const posts: Post[] = [
       },
       {
         type: "p",
-        text: "Si vous lisez ceci, bienvenue. Le [sommaire](/#sommaire) est en haut à droite, les [archives](/#archives) plus bas, et le [livre d'or](/#livre-dor) attend votre premier message.",
+        text: "Si vous lisez ceci, bienvenue. Le [sommaire](/#sommaire) est en haut à droite : chaque article y garde son numéro.",
       },
     ],
   },
@@ -173,7 +173,7 @@ const posts: Post[] = [
       { type: "h2", text: "Ce que ça change" },
       {
         type: "p",
-        text: "Écrire pour quelqu'un d'autre oblige à comprendre pour de vrai. Les trous dans le raisonnement deviennent visibles. Et de temps en temps, un message arrive dans le [livre d'or](/#livre-dor) pour corriger une erreur : c'est le plus beau compliment qu'on puisse faire à un brouillon.",
+        text: "Écrire pour quelqu'un d'autre oblige à comprendre pour de vrai. Les trous dans le raisonnement deviennent visibles. Et de temps en temps, un message arrive pour corriger une erreur : c'est le plus beau compliment qu'on puisse faire à un brouillon.",
       },
     ],
   },
@@ -185,7 +185,7 @@ const posts: Post[] = [
     dek: "Livres d'or, compteurs de visites et webrings : petite archéologie des pages perso.",
     excerpt:
       "Avant les plateformes, il y avait les pages perso : du HTML écrit à la main, un peu de PHP pour le livre d'or, un compteur de visites qui tournait comme un odomètre. Tout était lent, moche et merveilleusement libre. Ce que ces pages savaient déjà mérite qu'on s'en souvienne.",
-    note: "Pourquoi ce site a un livre d'or, un compteur et des fenêtres façon Windows 98. Par nostalgie, mais pas seulement.",
+    note: "Pourquoi ce site a des liens bleus soulignés, des fenêtres façon Windows 98 et des adresses en index.php. Par nostalgie, mais pas seulement.",
     date: "2026-06-30",
     updated: "2026-10-12",
     category: "Web",
@@ -209,7 +209,7 @@ const posts: Post[] = [
       { type: "h2", text: "Ce que ce site reprend" },
       {
         type: "p",
-        text: "Le [livre d'or](/#livre-dor), le compteur de visites, les liens bleus soulignés et les [archives en tableau](/#archives) sont des clins d'œil. Mais l'adresse [index.php?id=4](/index.php?id=4) fonctionne vraiment : elle vous ramène ici. Petit hommage aux URL d'antan, servi par Next.js.",
+        text: "Les liens bleus soulignés, le [sommaire](/#sommaire) numéroté et la fenêtre Windows 98 en fin d'article sont des clins d'œil. Mais l'adresse [index.php?id=4](/index.php?id=4) fonctionne vraiment : elle vous ramène ici. Petit hommage aux URL d'antan, servi par Next.js.",
       },
       {
         type: "p",
@@ -269,7 +269,7 @@ const posts: Post[] = [
     dek: "Et si le but d'un blog n'était pas d'être lu aujourd'hui, mais retrouvé dans dix ans ?",
     excerpt:
       "On publie pour être vu. On archive pour être retrouvé. Ce carnet essaie de faire la seconde chose : ranger, dater, relier, pour que chaque idée reste accessible longtemps après avoir quitté le fil d'actualité.",
-    note: "Un essai sur la différence entre flux et archive, et pourquoi ce site range ses articles dans un tableau.",
+    note: "Un essai sur la différence entre flux et archive, et pourquoi chaque article de ce site garde un numéro fixe.",
     date: "2026-09-27",
     category: "Essai",
     tags: ["archive", "mémoire", "web"],
@@ -296,7 +296,7 @@ const posts: Post[] = [
       { type: "quote", text: "Une archive est une promesse faite à la personne que vous serez dans dix ans." },
       {
         type: "p",
-        text: "Les [archives](/#archives) de ce site sont présentées comme le résultat d'une vieille requête SQL : un tableau, des colonnes, des liens bleus. C'est austère, et c'est voulu.",
+        text: "Ici, chaque article garde son numéro dans le [sommaire](/#sommaire) et une adresse qui ne bouge pas, même en version rétro : [index.php?id=6](/index.php?id=6). C'est austère, et c'est voulu.",
       },
     ],
   },
@@ -337,7 +337,7 @@ const posts: Post[] = [
       { type: "quote", text: "Un mentor à distance ne vous connaît pas. Mais il vous a laissé ses notes." },
       {
         type: "p",
-        text: "Cette liste va grandir. Si une vidéo ou un texte vous a servi de mentor, laissez-le dans le [livre d'or](/#livre-dor) : je l'ajouterai ici, avec votre nom.",
+        text: "Cette liste va grandir. Si une vidéo ou un texte vous a servi de mentor, écrivez-moi : je l'ajouterai ici, avec votre nom.",
       },
     ],
   },

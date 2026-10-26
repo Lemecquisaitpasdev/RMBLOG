@@ -17,9 +17,7 @@
   --font-brush: var(--font-marker), "Permanent Marker", cursive;
   --font-wordmark: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
   --font-italic: var(--font-playfair), Georgia, serif;
-  --font-pixel: var(--font-silkscreen), "Courier New", monospace;
   --color-link: var(--link);
-  --color-link-visited: var(--link-visited);
   --color-retro-red: var(--retro-red);
   --color-win-face: var(--win-face);
   --color-win-shadow: var(--win-shadow);
@@ -98,7 +96,6 @@
 
   /* Rétro */
   --link: #1414ff;
-  --link-visited: #551a8b;
   --retro-red: #f20d0d;
   --win-face: #c0c0c0;
   --win-shadow: #808080;
@@ -207,9 +204,6 @@
     outline: 1px dotted currentColor;
     outline-offset: 2px;
   }
-  .retro-link.visited-purple:visited {
-    color: var(--link-visited);
-  }
 
   .win-btn {
     @apply bevel-out inline-flex items-center justify-center gap-1 px-4 py-1 font-sans text-[13px] text-black select-none;
@@ -223,12 +217,6 @@
   .win-btn:focus-visible {
     outline: 1px dotted #000;
     outline-offset: -5px;
-  }
-  .win-input {
-    @apply bevel-in w-full bg-white px-2 py-1 font-mono text-[14px] text-black;
-  }
-  .win-input:focus {
-    outline: none;
   }
 
   /* Le pinceau : une police feutre, rendue « sèche » par le filtre SVG #brush. */
@@ -245,16 +233,8 @@
   .animate-spin-y {
     animation: spin-y 7s linear infinite;
   }
-  .animate-marquee {
-    animation: marquee var(--marquee-duration, 40s) linear infinite;
-  }
-  .animate-blink {
-    animation: blink 1.1s steps(1, end) infinite;
-  }
   @media (prefers-reduced-motion: reduce) {
-    .animate-spin-y,
-    .animate-marquee,
-    .animate-blink {
+    .animate-spin-y {
       animation: none;
     }
   }
@@ -278,25 +258,6 @@
   }
   to {
     transform: rotateY(360deg);
-  }
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
   }
 }
 

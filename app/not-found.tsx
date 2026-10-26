@@ -14,9 +14,9 @@ export default function NotFound() {
         <Link href="/" className="retro-link">
           index.php
         </Link>{" "}
-        ou aux{" "}
-        <Link href="/#archives" className="retro-link">
-          archives
+        ou au{" "}
+        <Link href="/#sommaire" className="retro-link">
+          sommaire
         </Link>
         .
       </p>
