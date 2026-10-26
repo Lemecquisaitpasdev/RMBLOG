@@ -2,9 +2,8 @@ import type { Metadata } from "next"
 import { Archivo, Courier_Prime, Permanent_Marker, Playfair_Display } from "next/font/google"
 import { BrushFilter } from "@/components/blog/brush"
 import { SiteFooter } from "@/components/blog/site-footer"
-import { SiteHeader, type TocItem } from "@/components/blog/site-header"
-import { getPosts } from "@/lib/posts"
-import { site } from "@/lib/site"
+import { SiteHeader } from "@/components/blog/site-header"
+import { site, toc } from "@/lib/site"
 import "./globals.css"
 
 // Le logo : une grotesque très grasse qu'on peut condenser (axe wdth).
@@ -25,13 +24,6 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
-  const posts = getPosts()
-  const toc: TocItem[] = [
-    ...posts.map((post) => ({ n: post.id, label: post.tocLabel, href: `/articles/${post.slug}` })),
-    { n: posts.length + 1, label: "Les Benjamins", href: "/#benjamins" },
-    { n: posts.length + 2, label: "La Kaaba", href: "/#kaaba" },
-  ]
-
   return (
     <html
       lang={site.lang}

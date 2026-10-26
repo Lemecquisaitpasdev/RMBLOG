@@ -24,14 +24,14 @@ npm run lint
 
 | Fichier | Rôle |
 | --- | --- |
-| `lib/site.ts` | Nom, texte d'intro, titre au pinceau, images du bandeau, réseaux, e-mail, URL du site (RSS, sitemap) |
+| `lib/site.ts` | Nom, texte d'intro, titre au pinceau, images du bandeau, sommaire « De A à Z » (vide pour l'instant), réseaux, e-mail, URL du site (RSS, sitemap) |
 | `lib/posts.ts` | Les articles (blocs : paragraphe, intertitre, citation, liste, image, vidéo YouTube). `[texte](/lien)` et `**gras**` sont reconnus |
 | `public/images/` | Couvertures, images du bandeau, portrait de l'effet ASCII |
 | `app/globals.css` | Couleurs (bleu des liens, rouge, gris Windows), utilitaires rétro, animations |
 
 ## Pages
 
-- `/` : en-tête collant (intro en Courier, logo qui tourne, sommaire « De A à Z »), bandeau 3D, « All about the Benjamins » en plein écran, la Kaaba en plein écran ; le sommaire mène aux articles
+- `/` : en-tête collant (intro en Courier, logo qui tourne, sommaire « De A à Z »), bandeau 3D, « All about the Benjamins » en plein écran, la Kaaba en plein écran
 - `/articles/[slug]` : article avec chiffre au pinceau collant, métadonnées en Courier, boîte de dialogue « fin de l'article »
 - `/index.php?id=4`, `/index.php?page=kaaba` : les vieilles adresses redirigent vraiment
 - `/feed.xml` (RSS), `/sitemap.xml`, `/robots.txt`, et une 404 déguisée en erreur Apache

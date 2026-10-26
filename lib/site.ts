@@ -46,3 +46,11 @@ export const site = {
 } as const
 
 export type Site = typeof site
+
+export type TocItem = { n: number; label: string; href: string }
+
+/**
+ * Le sommaire « De A à Z » de l'en-tête. Vide pour l'instant : ajoutez une
+ * entrée par ligne, par exemple { n: 1, label: "Mon article", href: "/articles/mon-article" }.
+ */
+export const toc: TocItem[] = []

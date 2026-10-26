@@ -3,8 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { Wordmark } from "@/components/blog/wordmark"
-
-export type TocItem = { n: number; label: string; href: string }
+import type { TocItem } from "@/lib/site"
 
 /**
  * L'en-tête de free-game.virgilabloh.com : texte d'intro en Courier, logo qui
@@ -86,19 +85,21 @@ export function SiteHeader({ intro, wordmark, items }: { intro: readonly string[
             <br />
             (SOMMAIRE)
           </h2>
-          <ol
-            className="mt-5 grid gap-x-12 font-sans text-[clamp(1rem,1.42vw,1.3rem)] leading-[1.12] font-bold uppercase sm:grid-flow-col sm:grid-rows-[repeat(var(--rows),auto)] lg:mx-auto lg:w-fit"
-            style={{ "--rows": rows } as React.CSSProperties}
-          >
-            {items.map((item) => (
-              <li key={item.href} className="flex gap-[0.3em]">
-                <span className="w-[2.1ch] shrink-0 text-right text-link tabular-nums">{item.n}.</span>
-                <Link href={item.href} className="text-link decoration-2 underline-offset-2 hover:underline">
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ol>
+          {items.length ? (
+            <ol
+              className="mt-5 grid gap-x-12 font-sans text-[clamp(1rem,1.42vw,1.3rem)] leading-[1.12] font-bold uppercase sm:grid-flow-col sm:grid-rows-[repeat(var(--rows),auto)] lg:mx-auto lg:w-fit"
+              style={{ "--rows": rows } as React.CSSProperties}
+            >
+              {items.map((item) => (
+                <li key={item.href} className="flex gap-[0.3em]">
+                  <span className="w-[2.1ch] shrink-0 text-right text-link tabular-nums">{item.n}.</span>
+                  <Link href={item.href} className="text-link decoration-2 underline-offset-2 hover:underline">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          ) : null}
         </nav>
       </div>
     </header>
