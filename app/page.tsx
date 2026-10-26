@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { CoverSection } from "@/components/blog/cover-section"
 import { Hero } from "@/components/blog/hero"
 import { AsciiEffect } from "@/components/ui/ascii-effect"
@@ -12,14 +13,15 @@ export default function Home() {
         <h2 id="portrait-titre" className="sr-only">
           Portrait
         </h2>
-        <AsciiEffect
+        <Image
           src="/images/portrait.jpg"
-          alt="Portrait en noir et blanc d'un jeune homme aux cheveux bouclés, redessiné en trame binaire verte qui scintille"
-          position="50% 25%"
-          className="absolute inset-0"
+          alt="Portrait en noir et blanc d'un jeune homme aux cheveux bouclés, en débardeur blanc et veste à capuche"
+          fill
+          sizes="100vw"
+          className="object-cover object-[50%_25%]"
         />
-        <p className="pointer-events-none absolute bottom-4 left-4 bg-black px-2 py-1 font-mono text-[12px] text-[#00ff66]">
-          fig. 2 — portrait, en trame binaire
+        <p className="pointer-events-none absolute bottom-4 left-4 bg-black px-2 py-1 font-mono text-[12px] text-white">
+          fig. 2 — portrait
         </p>
       </CoverSection>
 

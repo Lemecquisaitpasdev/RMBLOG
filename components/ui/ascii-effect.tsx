@@ -197,12 +197,15 @@ export const BENJAMINS: AsciiParams = {
   directionalBothSides: false,
 }
 
+/** Partial settings: any key, and any single post-effect, can be overridden on its own. */
+export type AsciiOverrides = Partial<Omit<AsciiParams, "pfx">> & { pfx?: Partial<AsciiParams["pfx"]> }
+
 export type AsciiEffectProps = {
   /** Same-origin photo (its pixels are read). */
   src: string
   alt: string
   /** Overrides merged over the Benjamins recipe. */
-  params?: Partial<AsciiParams>
+  params?: AsciiOverrides
   /** Focal point of the cover-fit photo, like CSS object-position. */
   position?: string
   /** Frame cap. @default 30 */
@@ -257,7 +260,7 @@ function context(c: HTMLCanvasElement, opts?: CanvasRenderingContext2DSettings) 
   return x
 }
 
-function merge(params?: Partial<AsciiParams>): AsciiParams {
+function merge(params?: AsciiOverrides): AsciiParams {
   return {
     ...BENJAMINS,
     ...params,
@@ -479,12 +482,15 @@ function build(img: HTMLImageElement, cssW: number, cssH: number, p: AsciiParams
   const dots = makeCanvas(cols * 4, rows * 4)
   const dotsCtx = context(dots)
   const d4 = cs / 4
-  const gap = Math.max(1, Math.round(d4 * 0.14))
+  // Dots of one or two pixels keep no gap, or the gap would eat half the dot.
+  const gap = d4 >= 3 ? Math.max(1, Math.round(d4 * 0.14)) : 0
   const gapTile = makeCanvas(d4, d4)
   const gt = context(gapTile)
   gt.fillStyle = "#000"
-  gt.fillRect(d4 - gap, 0, gap, d4)
-  gt.fillRect(0, d4 - gap, d4, gap)
+  if (gap) {
+    gt.fillRect(d4 - gap, 0, gap, d4)
+    gt.fillRect(0, d4 - gap, d4, gap)
+  }
 
   const layer = makeCanvas(W, H)
   const tmp = makeCanvas(W, H)
@@ -1181,7 +1187,13 @@ function postFx(ctx: CanvasRenderingContext2D, st: Setup, p: AsciiParams, t: num
     }
     if (Math.random() < I("glitch") * 0.4) {
       ctx.globalCompositeOperation = "screen"
-      ctx.fillStyle = Math.random() < 0.5 ? "rgba(255,0,80,0.18)" : "rgba(0,255,220,0.18)"
+      // Coloured flashes, unless the picture is meant to stay black and white.
+      ctx.fillStyle =
+        p.grayscale >= 100 && p.tintOpacity <= 0
+          ? "rgba(255,255,255,0.18)"
+          : Math.random() < 0.5
+            ? "rgba(255,0,80,0.18)"
+            : "rgba(0,255,220,0.18)"
       ctx.fillRect(0, Math.random() * H, W, (4 + Math.random() * 18) * dpr)
       ctx.globalCompositeOperation = "source-over"
     }

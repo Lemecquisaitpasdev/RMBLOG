@@ -52,7 +52,7 @@ Les composants sont copiés dans `components/ui` parce que c'est le dossier de l
 
 ```tsx
 <AsciiEffect src="/images/franklin.jpg" alt="…" className="aspect-[4/3] w-full" />
-<AsciiEffect src="/photo.jpg" alt="…" params={{ renderMode: "matrix", tint: "#00ff66" }} />
+<AsciiEffect src="/photo.jpg" alt="…" params={{ renderMode: "matrix", pfx: { chromatic: { enabled: false, intensity: 0 } } }} />
 ```
 
 ## À brancher plus tard (back)
