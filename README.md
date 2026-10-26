@@ -31,7 +31,7 @@ npm run lint
 
 ## Pages
 
-- `/` : en-tête collant (intro en Courier, logo qui tourne, sommaire « De A à Z »), bandeau 3D, « All about the Benjamins » en plein écran, introduction, rubriques numérotées, la Kaaba en plein écran
+- `/` : en-tête collant (intro en Courier, logo qui tourne, sommaire « De A à Z »), bandeau 3D, « All about the Benjamins » en plein écran, la Kaaba en plein écran ; le sommaire mène aux articles
 - `/articles/[slug]` : article avec chiffre au pinceau collant, métadonnées en Courier, boîte de dialogue « fin de l'article »
 - `/index.php?id=4`, `/index.php?page=kaaba` : les vieilles adresses redirigent vraiment
 - `/feed.xml` (RSS), `/sitemap.xml`, `/robots.txt`, et une 404 déguisée en erreur Apache

@@ -18,7 +18,6 @@ export function SiteFooter() {
             title: "Lire",
             links: [
               { label: "Sommaire", href: "/#sommaire" },
-              { label: "Introduction", href: "/#introduction" },
               { label: "Flux RSS", href: "/feed.xml" },
             ],
           },

@@ -3,7 +3,6 @@ import { getPostById } from "@/lib/posts"
 
 const PAGES: Record<string, string> = {
   sommaire: "/#sommaire",
-  introduction: "/#introduction",
   benjamins: "/#benjamins",
   kaaba: "/#kaaba",
 }

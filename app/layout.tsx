@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   const posts = getPosts()
   const toc: TocItem[] = [
-    ...posts.map((post) => ({ n: post.id, label: post.tocLabel, href: `/#${post.slug}` })),
+    ...posts.map((post) => ({ n: post.id, label: post.tocLabel, href: `/articles/${post.slug}` })),
     { n: posts.length + 1, label: "Les Benjamins", href: "/#benjamins" },
     { n: posts.length + 2, label: "La Kaaba", href: "/#kaaba" },
   ]
