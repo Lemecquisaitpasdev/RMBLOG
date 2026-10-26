@@ -24,9 +24,10 @@ npm run lint
 
 | Fichier | Rôle |
 | --- | --- |
-| `lib/site.ts` | Nom, texte d'intro, titre au pinceau, images du bandeau, sommaire « De A à Z » (vide pour l'instant), réseaux, e-mail, URL du site (RSS, sitemap) |
+| `lib/projects.ts` | Les projets lancés qui défilent dans le bandeau 3D (nom, vignette 16:9, futur lien vers leur histoire) |
+| `lib/site.ts` | Nom, texte d'intro, titre au pinceau, sommaire « De A à Z » (vide pour l'instant), réseaux, e-mail, URL du site (RSS, sitemap) |
 | `lib/posts.ts` | Les articles (blocs : paragraphe, intertitre, citation, liste, image, vidéo YouTube). `[texte](/lien)` et `**gras**` sont reconnus |
-| `public/images/` | Couvertures, images du bandeau, images des effets ASCII (`franklin.jpg`, `portrait.jpg`) |
+| `public/images/` | Couvertures d'articles, vignettes des projets (`projects/`), images des effets ASCII (`franklin.jpg`, `portrait.jpg`) |
 | `app/globals.css` | Couleurs (bleu des liens, rouge, gris Windows), utilitaires rétro, animations |
 
 ## Pages
@@ -40,7 +41,7 @@ npm run lint
 
 | Composant | Utilisé dans |
 | --- | --- |
-| `tilted-grid-hero.tsx` : rangée d'images sur un cylindre 3D | bandeau d'accueil (`components/blog/hero.tsx`) |
+| `tilted-grid-hero.tsx` : rangée d'images sur un cylindre 3D | bandeau d'accueil des projets (`components/blog/hero.tsx`) |
 | `wild-hunt-footer.tsx` : pied de page tramé, gothique en cellules | pied de page (`components/blog/site-footer.tsx`) |
 | `ascii-effect.tsx` : effet ASCII « All about the Benjamins », réimplémenté en Canvas2D (25 modes de rendu, réglages couleur, flous, post-effets, lumières, masque, animations) | sections plein écran `#portrait` et `#benjamins` (Franklin), sous le bandeau |
 | `kaaba.tsx` : vidéo ASCII « kaaba » de 21st.dev | section plein écran `#kaaba`, avant le pied de page |

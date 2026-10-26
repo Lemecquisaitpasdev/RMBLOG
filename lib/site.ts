@@ -21,20 +21,6 @@ export const site = {
   /** Le grand titre au pinceau du bandeau d'accueil. */
   heroTitle: "CARNET LIBRE",
 
-  /** Images qui défilent dans le bandeau 3D (TiltedGridHero). */
-  heroImages: [
-    { src: "/images/hero/318.jpg", alt: "La tour Eiffel en noir et blanc, un oiseau en vol" },
-    { src: "/images/hero/101.jpg", alt: "Un bunker de béton sous un ciel vert d'eau" },
-    { src: "/images/hero/175.jpg", alt: "Le cadran d'une horloge en noir et blanc" },
-    { src: "/images/hero/338.jpg", alt: "Une silhouette encapuchonnée face à la mer" },
-    { src: "/images/hero/111.jpg", alt: "Une voiture ancienne garée dans une rue" },
-    { src: "/images/hero/447.jpg", alt: "Une personne face à un lac et des montagnes" },
-    { src: "/images/hero/494.jpg", alt: "Une ruelle sombre traversée par la lumière" },
-    { src: "/images/hero/145.jpg", alt: "La tête d'une guitare en gros plan" },
-    { src: "/images/hero/106.jpg", alt: "Des fleurs roses contre un ciel bleu" },
-    { src: "/images/hero/514.jpg", alt: "Une maison en bois et un 4x4 blanc" },
-  ],
-
   /** Liens du pied de page. Remplacez les « # » par vos vrais profils. */
   social: [
     { label: "Instagram", href: "#" },

@@ -1,13 +1,14 @@
 import { TiltedGridHero } from "@/components/ui/tilted-grid-hero"
 import { Brush } from "@/components/blog/brush"
+import { projects } from "@/lib/projects"
 import { site } from "@/lib/site"
 
-/** L'ouverture : le titre au pinceau au-dessus du bandeau 3D (TiltedGridHero). */
+/** L'ouverture : le titre au pinceau au-dessus du bandeau 3D (TiltedGridHero) des projets lancés. */
 export function Hero() {
   return (
     <section aria-label="Accueil" className="relative">
       <TiltedGridHero
-        images={site.heroImages.map((img) => ({ ...img }))}
+        images={projects.map((project) => ({ src: project.image, alt: project.alt }))}
         className="h-[clamp(460px,82vw,600px)] w-full bg-background lg:h-[700px]"
         axis={66}
         tileHeight={30}
@@ -20,7 +21,7 @@ export function Hero() {
             &quot;{site.heroTitle}&quot;
           </Brush>
           <p className="mt-auto mb-4 max-w-xl font-mono text-[12px] leading-snug text-black/70">
-            fig. 1 — le carnet en images, en rotation continue (3D en CSS, aucun plug-in Flash requis).
+            fig. 1 — les projets lancés, en rotation continue (3D en CSS, aucun plug-in Flash requis).
           </p>
         </div>
       </TiltedGridHero>

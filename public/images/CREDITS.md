@@ -13,25 +13,16 @@ Images d'exemple, à remplacer par les vôtres.
 | covers/26.jpg | Vadim Sherbakov | https://unsplash.com/photos/tCICLJ5ktBE |
 | covers/36.jpg | Vadim Sherbakov | https://unsplash.com/photos/osSryggkso4 |
 | covers/250.jpg | Nicola Perantoni | https://unsplash.com/photos/irUQaBK3ydI |
-| hero/318.jpg | Louis Pellissier | https://unsplash.com/photos/wJ2SaSiL5FA |
-| hero/101.jpg | Christian Bardenhorst | https://unsplash.com/photos/8lMhzUjD1Wk |
-| hero/175.jpg | petradr | https://unsplash.com/photos/8hgm6mKK04U |
-| hero/338.jpg | Patryk Sobczak | https://unsplash.com/photos/9VPtNW84vGI |
-| hero/111.jpg | Gabe Rodriguez | https://unsplash.com/photos/eLUegVAjN7s |
-| hero/447.jpg | Joshua Earle | https://unsplash.com/photos/YxJ5AfKFgFE |
-| hero/494.jpg | Matthew Wiebe | https://unsplash.com/photos/v41pwp_RRJU |
-| hero/145.jpg | Lucas Boesche | https://unsplash.com/photos/VkuuTRkcRqw |
-| hero/106.jpg | Arvee Marie | https://unsplash.com/photos/YnfGtpt2gf4 |
-| hero/514.jpg | Jeff Sheldon | https://unsplash.com/photos/ICfoiW1d_90 |
 
 ## Domaine public
 
 - `franklin.jpg` : Joseph Siffred Duplessis, *Benjamin Franklin* (vers 1785), National Portrait Gallery, Smithsonian Institution. Domaine public, via Wikimedia Commons (Google Art Project).
 - Pied de page (chargé depuis le CDN du composant) : Peter Nicolai Arbo, *Åsgårdsreien* (1872), Nasjonalmuseet, Oslo. Domaine public.
 
-## Photo fournie
+## Visuels fournis
 
 - `portrait.jpg` : photo fournie pour le site (métadonnées retirées).
+- `projects/` : vignettes des projets, composées à partir des visuels fournis (couverture du pitch deck Dune, carte Founding Member, logo Tanse, logo aux chevrons).
 
 ## Vidéo
 
