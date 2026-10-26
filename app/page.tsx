@@ -107,7 +107,7 @@ export default function Home() {
           <p className="opacity-60">Lecture automatique après 3 secondes d&apos;inactivité</p>
         </div>
         <p className="pointer-events-none absolute bottom-4 left-4 bg-black px-2 py-1 font-mono text-[12px] text-white">
-          fig. 6 — galerie 3D infinie (21st.dev) · paysages de la démo
+          fig. 6 — galerie 3D infinie (21st.dev) · paysages de la démo et images choisies
         </p>
       </CoverSection>
     </>

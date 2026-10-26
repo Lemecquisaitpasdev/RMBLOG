@@ -22,6 +22,7 @@ Images d'exemple, à remplacer par les vôtres.
 ## Visuels fournis
 
 - `portrait.jpg` : photo fournie pour le site (métadonnées retirées).
+- `reve/09.jpg` à `reve/13.jpg` : images fournies pour la galerie « Mon rêve » (Carrera GT, bureau, villa, garage, cheval), converties en JPEG sans métadonnées.
 - `avatar.jpg` : le visage, recadré dans `portrait.jpg`, pour l'avatar du tableau de bord.
 - `projects/` : vignettes des projets, composées à partir des visuels fournis (couverture du pitch deck Dune, carte Founding Member, logo Tanse, logo aux chevrons).
 
