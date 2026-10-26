@@ -1,8 +1,11 @@
 import Image from "next/image"
 import { CoverSection } from "@/components/blog/cover-section"
+import { DreamGallery } from "@/components/blog/dream-gallery"
 import { Hero } from "@/components/blog/hero"
+import { Portfolio } from "@/components/blog/portfolio"
 import { AsciiEffect } from "@/components/ui/ascii-effect"
 import { AsciiArt } from "@/components/ui/kaaba"
+import { dreamImages } from "@/lib/dream"
 
 export default function Home() {
   return (
@@ -68,6 +71,43 @@ export default function Home() {
         </div>
         <p className="pointer-events-none absolute bottom-4 left-4 bg-black px-2 py-1 font-mono text-[12px] text-white">
           fig. 4 — La Kaaba, La Mecque · art ASCII animé (21st.dev)
+        </p>
+      </CoverSection>
+
+      <CoverSection
+        id="portefeuille"
+        aria-labelledby="portefeuille-titre"
+        threshold={0.3}
+        className="relative w-full scroll-mt-0 bg-black px-2 pt-6 pb-6 sm:px-6 sm:pt-10"
+      >
+        <h2 id="portefeuille-titre" className="sr-only">
+          50 000 000 $, revalorisés chaque seconde au cours du marché
+        </h2>
+        <Portfolio className="max-md:empty:min-h-[2870px] md:max-[1199px]:empty:min-h-[1840px] min-[1200px]:empty:min-h-[1140px]" />
+        <p className="mt-6 font-mono text-[12px] text-white">
+          fig. 5 — 50 000 000 $ fictifs, revalorisés chaque seconde au cours du marché · tableau de bord de vasnev.art
+          (21st.dev)
+        </p>
+      </CoverSection>
+
+      <CoverSection id="reve" aria-labelledby="reve-titre" className="relative h-svh w-full scroll-mt-0 overflow-hidden bg-white">
+        <DreamGallery className="absolute inset-0" />
+        <ul className="sr-only">
+          {dreamImages.map((image) => (
+            <li key={image.src}>{image.alt}</li>
+          ))}
+        </ul>
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-3 text-center text-white mix-blend-exclusion">
+          <h2 id="reve-titre" className="max-w-[16ch] font-serif text-4xl tracking-tight md:text-7xl">
+            <span className="italic">Mon rêve,</span> sûrement fabriqué par les autres
+          </h2>
+        </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-16 text-center font-mono text-[11px] font-semibold text-white uppercase mix-blend-exclusion">
+          <p>Faites défiler la page pour traverser les images</p>
+          <p className="opacity-60">Lecture automatique après 3 secondes d&apos;inactivité</p>
+        </div>
+        <p className="pointer-events-none absolute bottom-4 left-4 bg-black px-2 py-1 font-mono text-[12px] text-white">
+          fig. 6 — galerie 3D infinie (21st.dev) · paysages de la démo
         </p>
       </CoverSection>
     </>

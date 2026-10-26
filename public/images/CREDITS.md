@@ -22,7 +22,16 @@ Images d'exemple, à remplacer par les vôtres.
 ## Visuels fournis
 
 - `portrait.jpg` : photo fournie pour le site (métadonnées retirées).
+- `avatar.jpg` : le visage, recadré dans `portrait.jpg`, pour l'avatar du tableau de bord.
 - `projects/` : vignettes des projets, composées à partir des visuels fournis (couverture du pitch deck Dune, carte Founding Member, logo Tanse, logo aux chevrons).
+
+## Démos 21st.dev
+
+- `reve/01.jpg` à `reve/08.jpg` : les paysages de la démo de la galerie 3D (« 3d-gallery-photography »), copiés depuis cdn.21st.dev, redimensionnés et sans métadonnées. Photographes non indiqués par la démo.
+
+## Polices
+
+- `public/fonts/Geist-Variable.woff2`, `GeistMono-Variable.woff2` : Geist et Geist Mono, © Vercel et basement.studio, licence SIL Open Font License 1.1 (paquet npm `geist`).
 
 ## Vidéo
 

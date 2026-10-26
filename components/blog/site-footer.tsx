@@ -27,6 +27,8 @@ export function SiteFooter() {
               { label: "Portrait", href: "/#portrait" },
               { label: "Les Benjamins", href: "/#benjamins" },
               { label: "La Kaaba", href: "/#kaaba" },
+              { label: "Le portefeuille", href: "/#portefeuille" },
+              { label: "Mon rêve", href: "/#reve" },
             ],
           },
           { title: "Ailleurs", links: site.social.map((s) => ({ ...s })) },

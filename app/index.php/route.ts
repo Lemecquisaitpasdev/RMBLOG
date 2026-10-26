@@ -6,6 +6,8 @@ const PAGES: Record<string, string> = {
   benjamins: "/#benjamins",
   portrait: "/#portrait",
   kaaba: "/#kaaba",
+  portefeuille: "/#portefeuille",
+  reve: "/#reve",
 }
 
 /**

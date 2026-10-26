@@ -18,7 +18,8 @@ npm run lint
 - **Next.js 16** (App Router, Cache Components, Turbopack) + **React 19** + **TypeScript**
 - **Tailwind CSS 4** (configuration dans `app/globals.css`)
 - Structure **shadcn/ui** : `components.json`, alias `@/components/ui`, `@/lib/utils` (`cn`)
-- Polices via `next/font` : Archivo (logo), Permanent Marker (pinceau), Playfair Display (italiques), Courier Prime
+- Polices via `next/font` : Archivo (logo), Permanent Marker (pinceau), Playfair Display (italiques), Courier Prime ; Geist et Geist Mono auto-hébergées (`public/fonts`) pour le tableau de bord
+- **three.js** + `@react-three/fiber` + `@react-three/drei` pour la galerie 3D (chargés seulement à l'approche de la section)
 
 ## Où modifier quoi
 
@@ -27,12 +28,15 @@ npm run lint
 | `lib/projects.ts` | Les projets lancés qui défilent dans le bandeau 3D (nom, vignette 16:9, futur lien vers leur histoire) |
 | `lib/site.ts` | Nom, texte d'intro, titre au pinceau, sommaire « De A à Z » (vide pour l'instant), réseaux, e-mail, URL du site (RSS, sitemap) |
 | `lib/posts.ts` | Les articles (blocs : paragraphe, intertitre, citation, liste, image, vidéo YouTube). `[texte](/lien)` et `**gras**` sont reconnus |
-| `public/images/` | Couvertures d'articles, vignettes des projets (`projects/`), images des effets ASCII (`franklin.jpg`, `portrait.jpg`) |
+| `lib/portfolio.ts` | Le portefeuille de 50 000 000 $ : la base, sa répartition (dollar, euro, SPY, QQQ, BTC, ETH, SOL) et les exemples de la démo (paiements, objectifs, flux) |
+| `lib/live-quotes.ts` | Les connecteurs de cours (Binance, Finnhub) : reconnexion automatique, un cours par seconde |
+| `lib/dream.ts` | Les images de la galerie « Mon rêve, sûrement fabriqué par les autres » |
+| `public/images/` | Couvertures d'articles, vignettes des projets (`projects/`), images des effets ASCII (`franklin.jpg`, `portrait.jpg`), paysages de la galerie (`reve/`) |
 | `app/globals.css` | Couleurs (bleu des liens, rouge, gris Windows), utilitaires rétro, animations |
 
 ## Pages
 
-- `/` : en-tête collant (intro en Courier, logo qui tourne, sommaire « De A à Z »), bandeau 3D, un portrait en plein écran, « All about the Benjamins » en plein écran (même effet), la Kaaba en plein écran
+- `/` : en-tête collant (intro en Courier, logo qui tourne, sommaire « De A à Z »), bandeau 3D, un portrait en plein écran, « All about the Benjamins » en plein écran, la Kaaba en plein écran, le portefeuille de 50 000 000 $ au cours en direct, puis la galerie 3D « Mon rêve, sûrement fabriqué par les autres »
 - `/articles/[slug]` : article avec chiffre au pinceau collant, métadonnées en Courier, boîte de dialogue « fin de l'article »
 - `/index.php?id=4`, `/index.php?page=kaaba` : les vieilles adresses redirigent vraiment
 - `/feed.xml` (RSS), `/sitemap.xml`, `/robots.txt`, et une 404 déguisée en erreur Apache
@@ -44,7 +48,9 @@ npm run lint
 | `tilted-grid-hero.tsx` : rangée d'images sur un cylindre 3D | bandeau d'accueil des projets (`components/blog/hero.tsx`) |
 | `wild-hunt-footer.tsx` : pied de page tramé, gothique en cellules | pied de page (`components/blog/site-footer.tsx`) |
 | `ascii-effect.tsx` : effet ASCII « All about the Benjamins », réimplémenté en Canvas2D (25 modes de rendu, réglages couleur, flous, post-effets, lumières, masque, animations) | sections plein écran `#portrait` et `#benjamins` (Franklin), sous le bandeau |
-| `kaaba.tsx` : vidéo ASCII « kaaba » de 21st.dev | section plein écran `#kaaba`, avant le pied de page |
+| `kaaba.tsx` : vidéo ASCII « kaaba » de 21st.dev | section plein écran `#kaaba` |
+| `finance-bento.tsx` : tableau de bord de vasnev.art (patrimoine, répartition, crypto, actions…) | section `#portefeuille` (`components/blog/live-portfolio.tsx`) |
+| `3d-gallery-photography.tsx` : galerie 3D infinie (three.js) | section plein écran `#reve`, avant le pied de page (`components/blog/dream-gallery.tsx`) |
 
 Les composants sont copiés dans `components/ui` parce que c'est le dossier de la convention shadcn : la CLI (`npx shadcn add …`) y dépose ses composants et l'alias `@/components/ui` de `components.json` pointe dessus. Tout ce qui est propre au blog vit à côté, dans `components/blog`.
 
@@ -54,6 +60,22 @@ Les composants sont copiés dans `components/ui` parce que c'est le dossier de l
 <AsciiEffect src="/images/franklin.jpg" alt="…" className="aspect-[4/3] w-full" />
 <AsciiEffect src="/photo.jpg" alt="…" params={{ renderMode: "matrix", pfx: { chromatic: { enabled: false, intensity: 0 } } }} />
 ```
+
+Retouches apportées aux deux derniers, le reste est d'origine :
+
+- `finance-bento.tsx` : montants en millions (`$50.0M`), compteur à points assez large pour huit chiffres et plus (il rétrécit sur mobile), autonomie affichée en années au-delà de deux ans, variation crypto calculée au lieu d'être écrite en dur, et une entrée `live` qui redessine les cartes chaque seconde sans rejouer leur apparition.
+- `3d-gallery-photography.tsx` : elle écoute sa propre toile (la page en compte plusieurs), transmet enfin `speed` et `visibleCount`, s'arrête hors de l'écran, et `followPageScroll` la fait avancer avec le défilement de la page au lieu de capturer la molette (sinon on resterait coincé sur la section).
+
+## Le portefeuille en direct
+
+À l'ouverture de la page, le compteur vaut **50 000 000 $** : chaque ligne achète sa part au premier cours reçu, puis vaut quantité × cours, recalculé chaque seconde. Recharger la page repose la base.
+
+| Connecteur | Cours | Clé |
+| --- | --- | --- |
+| Binance (`data-stream.binance.vision`, données de marché publiques) | BTC, ETH, SOL et euro/dollar, un ticker par seconde, cotés en USDT | aucune |
+| Finnhub (`ws.finnhub.io`) | actions SPY et QQQ : dernier cours au chargement, puis chaque transaction pendant la séance de Wall Street (15 h 30 – 22 h à Paris) | gratuite |
+
+Pour brancher les actions : créer une clé sur [finnhub.io](https://finnhub.io/register), l'ajouter dans Vercel (Settings → Environment Variables) sous le nom `NEXT_PUBLIC_FINNHUB_TOKEN`, puis redéployer. La clé est lue par le navigateur, donc visible : c'est le fonctionnement prévu par Finnhub pour sa WebSocket, mais ne mettez pas une clé payante. Sans clé, les actions restent à leur valeur de départ et la barre d'état le dit.
 
 ## À brancher plus tard (back)
 
