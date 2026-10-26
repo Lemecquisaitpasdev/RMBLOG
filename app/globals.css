@@ -261,6 +261,15 @@
   }
 }
 
+@keyframes shelf-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
 @keyframes brush-wipe {
   from {
     clip-path: inset(-30% 100% -30% -10%);

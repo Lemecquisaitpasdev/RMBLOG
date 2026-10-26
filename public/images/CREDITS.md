@@ -30,6 +30,10 @@ Images d'exemple, à remplacer par les vôtres.
 
 - `reve/01.jpg` à `reve/08.jpg` : les paysages de la démo de la galerie 3D (« 3d-gallery-photography »), copiés depuis cdn.21st.dev, redimensionnés et sans métadonnées. Photographes non indiqués par la démo.
 
+## Pochettes de jeux vidéo
+
+- `jeux/*.jpg` : pochettes officielles des seize jeux, © leurs éditeurs (Rockstar Games, Sony Interactive Entertainment, Focus Entertainment, Ubisoft, Electronic Arts, Activision, Bungie / Activision, Square Enix). Copiées en basse définition depuis les articles de la Wikipédia anglophone, pour illustrer la liste.
+
 ## Polices
 
 - `public/fonts/Geist-Variable.woff2`, `GeistMono-Variable.woff2` : Geist et Geist Mono, © Vercel et basement.studio, licence SIL Open Font License 1.1 (paquet npm `geist`).

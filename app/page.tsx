@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { CoverSection } from "@/components/blog/cover-section"
 import { DreamGallery } from "@/components/blog/dream-gallery"
+import { GameShelf } from "@/components/blog/game-shelf"
 import { Hero } from "@/components/blog/hero"
 import { Portfolio } from "@/components/blog/portfolio"
 import { AsciiEffect } from "@/components/ui/ascii-effect"
@@ -109,6 +110,15 @@ export default function Home() {
         <p className="pointer-events-none absolute bottom-4 left-4 bg-black px-2 py-1 font-mono text-[12px] text-white">
           fig. 6 — galerie 3D infinie (21st.dev) · paysages de la démo et images choisies
         </p>
+      </CoverSection>
+
+      <CoverSection
+        id="jeux"
+        aria-labelledby="jeux-titre"
+        threshold={0.35}
+        className="relative w-full scroll-mt-0 overflow-hidden bg-[#0a0a0c] px-4 pt-14 pb-20 sm:px-8 lg:pt-20"
+      >
+        <GameShelf />
       </CoverSection>
     </>
   )

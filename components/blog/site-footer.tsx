@@ -29,6 +29,7 @@ export function SiteFooter() {
               { label: "La Kaaba", href: "/#kaaba" },
               { label: "Le portefeuille", href: "/#portefeuille" },
               { label: "Mon rêve", href: "/#reve" },
+              { label: "Mes jeux vidéo", href: "/#jeux" },
             ],
           },
           { title: "Ailleurs", links: site.social.map((s) => ({ ...s })) },

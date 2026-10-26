@@ -31,12 +31,13 @@ npm run lint
 | `lib/portfolio.ts` | Le portefeuille de 50 000 000 $ : la base, sa répartition (dollar, euro, SPY, QQQ, BTC, ETH, SOL) et les exemples de la démo (paiements, objectifs, flux) |
 | `lib/live-quotes.ts` | Les connecteurs de cours (Binance, Finnhub) : reconnexion automatique, un cours par seconde |
 | `lib/dream.ts` | Les images de la galerie « Mon rêve, sûrement fabriqué par les autres » |
+| `lib/games.ts` | Mes jeux vidéo préférés : titre, année, studio, couleur d'accent ; pochettes dans `public/images/jeux/<slug>.jpg` |
 | `public/images/` | Couvertures d'articles, vignettes des projets (`projects/`), images des effets ASCII (`franklin.jpg`, `portrait.jpg`), paysages de la galerie (`reve/`) |
 | `app/globals.css` | Couleurs (bleu des liens, rouge, gris Windows), utilitaires rétro, animations |
 
 ## Pages
 
-- `/` : en-tête collant (intro en Courier, logo qui tourne, sommaire « De A à Z »), bandeau 3D, un portrait en plein écran, « All about the Benjamins » en plein écran, la Kaaba en plein écran, le portefeuille de 50 000 000 $ au cours en direct, puis la galerie 3D « Mon rêve, sûrement fabriqué par les autres »
+- `/` : en-tête collant (intro en Courier, logo qui tourne, sommaire « De A à Z »), bandeau 3D, un portrait en plein écran, « All about the Benjamins » en plein écran, la Kaaba en plein écran, le portefeuille de 50 000 000 $ au cours en direct, la galerie 3D « Mon rêve, sûrement fabriqué par les autres », puis « Mes jeux vidéo préférés » (la pochette choisie teinte le fond, la sélection défile seule)
 - `/articles/[slug]` : article avec chiffre au pinceau collant, métadonnées en Courier, boîte de dialogue « fin de l'article »
 - `/index.php?id=4`, `/index.php?page=kaaba` : les vieilles adresses redirigent vraiment
 - `/feed.xml` (RSS), `/sitemap.xml`, `/robots.txt`, et une 404 déguisée en erreur Apache
