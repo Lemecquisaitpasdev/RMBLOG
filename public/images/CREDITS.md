@@ -29,6 +29,10 @@ Images d'exemple, à remplacer par les vôtres.
 - `franklin.jpg` : Joseph Siffred Duplessis, *Benjamin Franklin* (vers 1785), National Portrait Gallery, Smithsonian Institution. Domaine public, via Wikimedia Commons (Google Art Project).
 - Pied de page (chargé depuis le CDN du composant) : Peter Nicolai Arbo, *Åsgårdsreien* (1872), Nasjonalmuseet, Oslo. Domaine public.
 
+## Photo fournie
+
+- `portrait.jpg` : photo fournie pour le site (métadonnées retirées).
+
 ## Vidéo
 
 - « kaaba » : art ASCII animé, recette publiée sur 21st.dev, servie depuis assets.21st.dev.

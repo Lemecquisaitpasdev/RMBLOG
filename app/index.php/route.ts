@@ -4,6 +4,7 @@ import { getPostById } from "@/lib/posts"
 const PAGES: Record<string, string> = {
   sommaire: "/#sommaire",
   benjamins: "/#benjamins",
+  portrait: "/#portrait",
   kaaba: "/#kaaba",
 }
 

@@ -26,12 +26,12 @@ npm run lint
 | --- | --- |
 | `lib/site.ts` | Nom, texte d'intro, titre au pinceau, images du bandeau, sommaire « De A à Z » (vide pour l'instant), réseaux, e-mail, URL du site (RSS, sitemap) |
 | `lib/posts.ts` | Les articles (blocs : paragraphe, intertitre, citation, liste, image, vidéo YouTube). `[texte](/lien)` et `**gras**` sont reconnus |
-| `public/images/` | Couvertures, images du bandeau, portrait de l'effet ASCII |
+| `public/images/` | Couvertures, images du bandeau, images des effets ASCII (`franklin.jpg`, `portrait.jpg`) |
 | `app/globals.css` | Couleurs (bleu des liens, rouge, gris Windows), utilitaires rétro, animations |
 
 ## Pages
 
-- `/` : en-tête collant (intro en Courier, logo qui tourne, sommaire « De A à Z »), bandeau 3D, « All about the Benjamins » en plein écran, la Kaaba en plein écran
+- `/` : en-tête collant (intro en Courier, logo qui tourne, sommaire « De A à Z »), bandeau 3D, un portrait en plein écran, « All about the Benjamins » en plein écran (même effet), la Kaaba en plein écran
 - `/articles/[slug]` : article avec chiffre au pinceau collant, métadonnées en Courier, boîte de dialogue « fin de l'article »
 - `/index.php?id=4`, `/index.php?page=kaaba` : les vieilles adresses redirigent vraiment
 - `/feed.xml` (RSS), `/sitemap.xml`, `/robots.txt`, et une 404 déguisée en erreur Apache
@@ -42,7 +42,7 @@ npm run lint
 | --- | --- |
 | `tilted-grid-hero.tsx` : rangée d'images sur un cylindre 3D | bandeau d'accueil (`components/blog/hero.tsx`) |
 | `wild-hunt-footer.tsx` : pied de page tramé, gothique en cellules | pied de page (`components/blog/site-footer.tsx`) |
-| `ascii-effect.tsx` : effet ASCII « All about the Benjamins », réimplémenté en Canvas2D (25 modes de rendu, réglages couleur, flous, post-effets, lumières, masque, animations) | section plein écran `#benjamins`, sous le bandeau |
+| `ascii-effect.tsx` : effet ASCII « All about the Benjamins », réimplémenté en Canvas2D (25 modes de rendu, réglages couleur, flous, post-effets, lumières, masque, animations) | sections plein écran `#portrait` et `#benjamins` (Franklin), sous le bandeau |
 | `kaaba.tsx` : vidéo ASCII « kaaba » de 21st.dev | section plein écran `#kaaba`, avant le pied de page |
 
 Les composants sont copiés dans `components/ui` parce que c'est le dossier de la convention shadcn : la CLI (`npx shadcn add …`) y dépose ses composants et l'alias `@/components/ui` de `components.json` pointe dessus. Tout ce qui est propre au blog vit à côté, dans `components/blog`.

@@ -24,6 +24,7 @@ export function SiteFooter() {
           {
             title: "Images",
             links: [
+              { label: "Portrait", href: "/#portrait" },
               { label: "Les Benjamins", href: "/#benjamins" },
               { label: "La Kaaba", href: "/#kaaba" },
             ],

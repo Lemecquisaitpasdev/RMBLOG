@@ -8,6 +8,21 @@ export default function Home() {
     <>
       <Hero />
 
+      <CoverSection id="portrait" aria-labelledby="portrait-titre" className="relative h-svh w-full scroll-mt-0 overflow-hidden bg-black">
+        <h2 id="portrait-titre" className="sr-only">
+          Portrait
+        </h2>
+        <AsciiEffect
+          src="/images/portrait.jpg"
+          alt="Portrait en noir et blanc d'un jeune homme aux cheveux bouclés, redessiné en trame binaire verte qui scintille"
+          position="50% 25%"
+          className="absolute inset-0"
+        />
+        <p className="pointer-events-none absolute bottom-4 left-4 bg-black px-2 py-1 font-mono text-[12px] text-[#00ff66]">
+          fig. 2 — portrait, en trame binaire
+        </p>
+      </CoverSection>
+
       <CoverSection id="benjamins" aria-labelledby="benjamins-titre" className="relative h-svh w-full scroll-mt-0 overflow-hidden bg-black">
         <h2 id="benjamins-titre" className="sr-only">
           All about the Benjamins
@@ -19,7 +34,7 @@ export default function Home() {
           className="absolute inset-0"
         />
         <p className="pointer-events-none absolute bottom-4 left-4 bg-black px-2 py-1 font-mono text-[12px] text-[#00ff66]">
-          fig. 2 — « All about the Benjamins » · B. Franklin d&apos;après Duplessis (v. 1785)
+          fig. 3 — « All about the Benjamins » · B. Franklin d&apos;après Duplessis (v. 1785)
         </p>
       </CoverSection>
 
@@ -29,7 +44,7 @@ export default function Home() {
         </h2>
         <AsciiArt className="absolute inset-0" />
         <p className="pointer-events-none absolute bottom-4 left-4 bg-black px-2 py-1 font-mono text-[12px] text-white">
-          fig. 3 — La Kaaba, La Mecque · art ASCII animé (21st.dev)
+          fig. 4 — La Kaaba, La Mecque · art ASCII animé (21st.dev)
         </p>
       </CoverSection>
     </>
