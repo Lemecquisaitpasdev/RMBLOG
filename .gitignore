@@ -147,3 +147,9 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# next.js (ajouts)
+/out/
+.vercel
+next-env.d.ts
+*.pem
