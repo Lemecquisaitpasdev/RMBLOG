@@ -55,10 +55,17 @@ export default function Home() {
       </CoverSection>
 
       <CoverSection id="kaaba" aria-labelledby="kaaba-titre" className="relative h-svh w-full scroll-mt-0 overflow-hidden bg-[#e8f3ee]">
-        <h2 id="kaaba-titre" className="sr-only">
-          La Kaaba, La Mecque
-        </h2>
         <AsciiArt className="absolute inset-0" />
+        <div className="absolute inset-x-4 top-[10%] z-10 max-w-[640px] lg:inset-x-auto lg:top-[12%] lg:left-[4%]">
+          <h2
+            id="kaaba-titre"
+            className="font-sans text-[clamp(2rem,4vw,3.6rem)] leading-[1.08] font-bold tracking-[-0.02em] text-white uppercase"
+          >
+            <span className="bg-black px-2 [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">
+              Un chemin d&apos;obligation ou de foi&nbsp;?
+            </span>
+          </h2>
+        </div>
         <p className="pointer-events-none absolute bottom-4 left-4 bg-black px-2 py-1 font-mono text-[12px] text-white">
           fig. 4 — La Kaaba, La Mecque · art ASCII animé (21st.dev)
         </p>
