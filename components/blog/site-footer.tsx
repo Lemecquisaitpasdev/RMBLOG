@@ -30,6 +30,7 @@ export function SiteFooter() {
               { label: "Le portefeuille", href: "/#portefeuille" },
               { label: "Mon rêve", href: "/#reve" },
               { label: "Mes jeux vidéo", href: "/#jeux" },
+              { label: "Mes aspirations", href: "/#aspirations" },
             ],
           },
           { title: "Ailleurs", links: site.social.map((s) => ({ ...s })) },

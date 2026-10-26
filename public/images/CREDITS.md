@@ -30,6 +30,29 @@ Images d'exemple, à remplacer par les vôtres.
 
 - `reve/01.jpg` à `reve/08.jpg` : les paysages de la démo de la galerie 3D (« 3d-gallery-photography »), copiés depuis cdn.21st.dev, redimensionnés et sans métadonnées. Photographes non indiqués par la démo.
 
+## Portraits (Wikimedia Commons)
+
+Recadrés en 4:5, sans métadonnées. Les crédits s'affichent aussi sous la liste, sur la page.
+
+| Fichier | Auteur | Licence |
+| --- | --- | --- |
+| aspirations/mohamed-ali.jpg | Ira Rosenberg (World Journal Tribune), 1967, Library of Congress | domaine public |
+| aspirations/virgil-abloh.jpg | Myles Kalus Anak Jihem, 2019 | CC BY-SA 4.0 |
+| aspirations/charles-gave.jpg | Thinkerview, 2022 | CC BY 3.0 |
+| aspirations/ateyaba.jpg | Pablo Tupin-Noriega, 2015 | CC BY-SA 4.0 |
+| aspirations/kanye-west.jpg | David Shankbone, 2009 | domaine public |
+| aspirations/spinoza.jpg | peintre anonyme, v. 1665, Herzog August Bibliothek | domaine public |
+| aspirations/leibniz.jpg | Christoph Bernhard Francke, v. 1695, Herzog Anton Ulrich-Museum | domaine public |
+| aspirations/socrate.jpg | buste romain du Louvre, photo Eric Gaba | CC BY-SA 2.5 |
+| aspirations/cristiano-ronaldo.jpg | Bryan Berlin, 2026 | CC BY-SA 4.0 |
+| aspirations/drake.jpg | GabboT, 2017 | CC BY-SA 2.0 |
+| aspirations/tom-ford.jpg | Nicolas Genin, 2009 | CC BY-SA 2.0 |
+| aspirations/tadao-ando.jpg | Christopher Schriner, 2004 | CC BY-SA 2.0 |
+| aspirations/adam-sandler.jpg | Bryan Berlin, 2025 | CC BY-SA 4.0 |
+| aspirations/idriss-aberkane.jpg | Vivre et réussir en Afrique, 2026 | CC BY 4.0 |
+| aspirations/jean-marc-jancovici.jpg | Thinkerview, 2024 | CC BY-SA 4.0 |
+| aspirations/haroun.jpg | A ODW, 2020 | CC BY-SA 4.0 |
+
 ## Pochettes de jeux vidéo
 
 - `jeux/*.jpg` : pochettes officielles des seize jeux, © leurs éditeurs (Rockstar Games, Sony Interactive Entertainment, Focus Entertainment, Ubisoft, Electronic Arts, Activision, Bungie / Activision, Square Enix). Copiées en basse définition depuis les articles de la Wikipédia anglophone, pour illustrer la liste.

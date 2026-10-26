@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { AspirationsList } from "@/components/blog/aspirations-list"
 import { CoverSection } from "@/components/blog/cover-section"
 import { DreamGallery } from "@/components/blog/dream-gallery"
 import { GameShelf } from "@/components/blog/game-shelf"
@@ -6,6 +7,7 @@ import { Hero } from "@/components/blog/hero"
 import { Portfolio } from "@/components/blog/portfolio"
 import { AsciiEffect } from "@/components/ui/ascii-effect"
 import { AsciiArt } from "@/components/ui/kaaba"
+import { aspirations } from "@/lib/aspirations"
 import { dreamImages } from "@/lib/dream"
 
 export default function Home() {
@@ -119,6 +121,42 @@ export default function Home() {
         className="relative w-full scroll-mt-0 overflow-hidden bg-[#0a0a0c] px-4 pt-14 pb-20 sm:px-8 lg:pt-20"
       >
         <GameShelf />
+      </CoverSection>
+
+      <CoverSection
+        id="aspirations"
+        aria-labelledby="aspirations-titre"
+        threshold={0.18}
+        className="relative w-full scroll-mt-0 bg-white px-4 pt-14 pb-20 text-black sm:px-8 lg:pt-20"
+      >
+        <div className="mx-auto max-w-[1320px]">
+          <h2
+            id="aspirations-titre"
+            className="font-sans text-[clamp(2rem,4vw,3.6rem)] leading-[1.08] font-bold tracking-[-0.02em] text-white uppercase"
+          >
+            <span className="bg-black px-2 [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">
+              Mes aspirations préférées
+            </span>
+          </h2>
+          <p className="mt-4 font-mono text-[13px] text-black/70">
+            {aspirations.length} noms, de Socrate à aujourd&apos;hui
+            <span className="hidden md:inline"> · survolez un nom</span>
+          </p>
+          <div className="mt-10">
+            <AspirationsList />
+          </div>
+          <p className="mt-8 max-w-[110ch] font-mono text-[11px] leading-[1.6] text-black/60">
+            Photos Wikimedia Commons —{" "}
+            {aspirations
+              .filter((a) => a.credit)
+              .map((a) => `${a.name} : ${a.credit}`)
+              .join(" · ")}
+            .
+          </p>
+        </div>
+        <p className="pointer-events-none absolute bottom-4 left-4 bg-black px-2 py-1 font-mono text-[12px] text-white">
+          fig. 8 — mes aspirations préférées
+        </p>
       </CoverSection>
     </>
   )
