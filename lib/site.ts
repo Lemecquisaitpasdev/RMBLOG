@@ -48,7 +48,7 @@ export type NotebookTab = {
 
 export const tabs: NotebookTab[] = [
   { label: "Mes aspirations", href: "/#aspirations", sections: ["aspirations"] },
-  { label: "Mes divertissements préférés", href: "/#jeux", sections: ["jeux"] },
+  { label: "Mes divertissements préférés", href: "/#jeux", sections: ["jeux", "contenus"] },
   { label: "Mes investissements en direct", href: "/#portefeuille", sections: ["portefeuille"] },
   { label: "Mes réflexions", href: "/#benjamins", sections: ["benjamins", "kaaba", "reve"] },
   { label: "Mes œuvres", href: "/#oeuvres", sections: ["oeuvres"] },

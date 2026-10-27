@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 800" width="1160" height="800">
+  <rect width="1160" height="800" fill="#f3eee3"/>
+  <rect x="40" y="40" width="1080" height="720" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="2"/>
+  <line x1="460" y1="470" x2="700" y2="470" stroke="#000" stroke-opacity=".45" stroke-width="2"/>
+  <text x="580" y="420" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="120" fill="#000" fill-opacity=".72">à venir</text>
+  <text x="580" y="540" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="30" letter-spacing="6" fill="#000" fill-opacity=".55">CONTENU DU MOIS</text>
+</svg>

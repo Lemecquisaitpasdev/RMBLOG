@@ -13,7 +13,7 @@ import { FerrisWheelGallery } from "@/components/ui/ferris-wheel-gallery"
 import { AsciiArt } from "@/components/ui/kaaba"
 import { aspirations } from "@/lib/aspirations"
 import { dreamImages } from "@/lib/dream"
-import { monthly } from "@/lib/monthly"
+import { monthly, wheelItems } from "@/lib/monthly"
 import { site } from "@/lib/site"
 import { paintings } from "@/lib/works"
 
@@ -224,7 +224,7 @@ export default function Home() {
         </p>
       </CoverSection>
 
-      {monthly.items.length ? (
+      {wheelItems.length ? (
         <CoverSection
           id="contenus"
           aria-labelledby="contenus-titre"
@@ -243,7 +243,7 @@ export default function Home() {
             <p className="mt-3 font-display text-[clamp(1.6rem,3vw,2.4rem)] leading-none italic">{monthly.month}</p>
             <FerrisWheelGallery
               className="mt-10"
-              items={monthly.items}
+              items={wheelItems}
               autoplay
               interval={3600}
               scrollToTurn={false}

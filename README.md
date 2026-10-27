@@ -31,7 +31,7 @@ npm run lint
 | `lib/posts.ts` | Les articles (blocs : paragraphe, intertitre, citation, liste, image, vidéo YouTube). `[texte](/lien)` et `**gras**` sont reconnus |
 | `lib/portfolio.ts` | Le portefeuille de 50 000 000 $ : la base, sa répartition (dollar, euro, SPY, QQQ, BTC, ETH, SOL) et les exemples de la démo (paiements, objectifs, flux) |
 | `lib/live-quotes.ts` | Les connecteurs de cours (Binance, Finnhub) : reconnexion automatique, un cours par seconde |
-| `lib/monthly.ts` | Les contenus du mois sur la grande roue : le mois affiché et une entrée par contenu (image dans `public/images/mois/`, titre, type, date). Liste vide : la section n'apparaît pas |
+| `lib/monthly.ts` | Les contenus du mois sur la grande roue : le mois affiché et une entrée par contenu (image dans `public/images/mois/`, titre, type, date). Liste vide : six nacelles « à venir » |
 | `lib/dream.ts` | Les images de la galerie « Mon rêve, sûrement fabriqué par les autres » |
 | `lib/aspirations.ts` | Mes aspirations préférées : nom, rôle, dates, crédit de la photo ; photos dans `public/images/aspirations/<slug>.jpg` (sans crédit, un cadre « photo à venir ») |
 | `lib/games.ts` | Mes jeux vidéo préférés : titre, année, studio, couleur d'accent ; pochettes dans `public/images/jeux/<slug>.jpg` |
