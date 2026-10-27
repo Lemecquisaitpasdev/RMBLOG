@@ -34,7 +34,7 @@ npm run lint
 | `lib/dream.ts` | Les images de la galerie « Mon rêve, sûrement fabriqué par les autres » |
 | `lib/aspirations.ts` | Mes aspirations préférées : nom, rôle, dates, crédit de la photo ; photos dans `public/images/aspirations/<slug>.jpg` (sans crédit, un cadre « photo à venir ») |
 | `lib/games.ts` | Mes jeux vidéo préférés : titre, année, studio, couleur d'accent ; pochettes dans `public/images/jeux/<slug>.jpg` |
-| `public/images/` | Couvertures d'articles, vignettes des projets (`projects/`), images des effets ASCII (`franklin.jpg`, `portrait.jpg`), paysages de la galerie (`reve/`) |
+| `public/images/` | Couvertures d'articles, vignettes des projets (`projects/`), images des effets ASCII (`franklin.jpg`, `portrait.jpg`), images de la galerie « Mon rêve » (`reve/`) |
 | `app/globals.css` | Couleurs (bleu des liens, rouge, gris Windows), utilitaires rétro, animations |
 
 ## Pages
