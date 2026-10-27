@@ -35,6 +35,7 @@ export const aspirations: Aspiration[] = [
   { slug: "arthur-kar", name: "Arthur Kar", role: "fondateur de L'Art de L'Automobile" },
   { slug: "jean-marc-jancovici", name: "Jean-Marc Jancovici", role: "ingénieur, énergie et climat", dates: "né en 1962", credit: "Thinkerview, CC BY-SA 4.0" },
   { slug: "haroun", name: "Haroun", role: "humoriste", dates: "né en 1984", credit: "A ODW, CC BY-SA 4.0" },
+  { slug: "julie-kegels", name: "Julie Kegels", role: "styliste, prix LVMH 2026", credit: "autoportrait de Julie Kegels, tous droits réservés" },
 ]
 
 export const photoOf = (a: Aspiration) => (a.credit ? `/images/aspirations/${a.slug}.jpg` : null)
