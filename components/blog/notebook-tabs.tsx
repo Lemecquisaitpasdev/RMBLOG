@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { tabs } from "@/lib/site"
 
@@ -10,6 +11,8 @@ const ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII"]
 /** L'onglet de la section qu'on est en train de lire (celle qui traverse le milieu de l'écran), -1 sinon. */
 function useActiveTab() {
   const [active, setActive] = React.useState(-1)
+  // Les onglets vivent dans la mise en page : à chaque page, on regarde ses sections à elle.
+  const pathname = usePathname()
 
   React.useEffect(() => {
     const owner = new Map<string, number>()
@@ -30,8 +33,11 @@ function useActiveTab() {
       const el = document.getElementById(id)
       if (el) io.observe(el)
     }
-    return () => io.disconnect()
-  }, [])
+    return () => {
+      io.disconnect()
+      setActive(-1)
+    }
+  }, [pathname])
 
   return active
 }

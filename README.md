@@ -31,6 +31,7 @@ npm run lint
 | `lib/posts.ts` | Les articles (blocs : paragraphe, intertitre, citation, liste, image, vidéo YouTube). `[texte](/lien)` et `**gras**` sont reconnus |
 | `lib/portfolio.ts` | Le portefeuille de 50 000 000 $ : la base, sa répartition (dollar, euro, SPY, QQQ, BTC, ETH, SOL) et les exemples de la démo (paiements, objectifs, flux) |
 | `lib/live-quotes.ts` | Les connecteurs de cours (Binance, Finnhub) : reconnexion automatique, un cours par seconde |
+| `lib/thoughts.ts` | Mon carnet de pensées : une entrée par jour (date, paragraphes), la plus récente en haut de `/carnet-de-pensees` |
 | `lib/monthly.ts` | Les contenus du mois sur la grande roue : le mois affiché et une entrée par contenu (image dans `public/images/mois/`, titre, type, date). Liste vide : six nacelles « à venir » |
 | `lib/dream.ts` | Les images de la galerie « Mon rêve, sûrement fabriqué par les autres » |
 | `lib/aspirations.ts` | Mes aspirations préférées : nom, rôle, dates, crédit de la photo ; photos dans `public/images/aspirations/<slug>.jpg` (sans crédit, un cadre « photo à venir ») |
@@ -41,6 +42,7 @@ npm run lint
 ## Pages
 
 - `/` : en-tête collant (intro en Courier, logo qui tourne, les cinq onglets du carnet sur la tranche droite, qui se replient en tranche au bord de l'écran quand on descend), le titre « Carnet libre » au-dessus du bandeau 3D, un portrait en plein écran, « All about the Benjamins » en plein écran, la Kaaba en plein écran, le portefeuille de 50 000 000 $ au cours en direct, la galerie 3D « Mon rêve, sûrement fabriqué par les autres », « Mes jeux vidéo préférés » (la pochette choisie teinte le fond, la sélection défile seule), « Mes aspirations préférées » (les noms en grand, le portrait suit la souris), puis « Mes œuvres » (les tableaux sur une cimaise qui défile, en grand au clic, et le lecteur SoundCloud)
+- `/carnet-de-pensees` : mon carnet de pensées, sur papier réglé, une entrée datée par jour d'écriture (sixième onglet)
 - `/articles/[slug]` : article avec chiffre au pinceau collant, métadonnées en Courier, boîte de dialogue « fin de l'article »
 - `/index.php?id=4`, `/index.php?page=kaaba` : les vieilles adresses redirigent vraiment
 - `/feed.xml` (RSS), `/sitemap.xml`, `/robots.txt`, et une 404 déguisée en erreur Apache

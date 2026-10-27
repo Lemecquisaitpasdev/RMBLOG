@@ -52,4 +52,5 @@ export const tabs: NotebookTab[] = [
   { label: "Mes investissements en direct", href: "/#portefeuille", sections: ["portefeuille"] },
   { label: "Mes réflexions", href: "/#benjamins", sections: ["benjamins", "kaaba", "reve"] },
   { label: "Mes œuvres", href: "/#oeuvres", sections: ["oeuvres"] },
+  { label: "Mon carnet de pensées", href: "/carnet-de-pensees", sections: ["carnet"] },
 ]
