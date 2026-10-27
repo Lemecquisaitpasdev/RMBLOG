@@ -24,7 +24,7 @@ const roman = (n: number) =>
 const ROMAN = Array.from({ length: 60 }, (_, i) => roman(i + 1))
 
 type WorksGalleryProps = {
-  paintings: (Painting & { ready: boolean })[]
+  paintings: Painting[]
   className?: string
 }
 
@@ -81,6 +81,7 @@ export function WorksGallery({ paintings, className }: WorksGalleryProps) {
   }
 
   const shown = open === null ? null : paintings[open]
+  if (!paintings.length) return null
 
   return (
     <div className={className}>
@@ -96,32 +97,25 @@ export function WorksGallery({ paintings, className }: WorksGalleryProps) {
               // même hauteur de toile pour tous sur grand écran : une toile 9:16 fait (9/16)² de la largeur
               // d'une 16:9, à quoi s'ajoute la marie-louise blanche (--mat) de chaque côté
               painting.portrait
-                ? "w-[62vw] shrink-0 snap-center [--mat:clamp(8px,1.5vw,22px)] sm:w-[calc((70vw-2*var(--mat))*0.3164+2*var(--mat))] lg:w-[calc((min(60vw,1000px)-2*var(--mat))*0.3164+2*var(--mat))]"
+                ? "w-[calc((86vw-2*var(--mat))*0.3164+2*var(--mat))] shrink-0 snap-center [--mat:clamp(8px,1.5vw,22px)] sm:w-[calc((70vw-2*var(--mat))*0.3164+2*var(--mat))] lg:w-[calc((min(60vw,1000px)-2*var(--mat))*0.3164+2*var(--mat))]"
                 : "w-[86vw] shrink-0 snap-center sm:w-[70vw] lg:w-[min(60vw,1000px)]"
             }
           >
             <figure>
               <button
                 type="button"
-                disabled={!painting.ready}
                 onClick={() => show(i)}
                 aria-label={`Voir en grand : tableau n° ${ROMAN[i]}`}
-                className="block w-full cursor-zoom-in border border-black bg-white p-[clamp(8px,1.5vw,22px)] shadow-[0_34px_60px_-38px_rgba(0,0,0,.6)] transition-transform duration-500 ease-out hover:-translate-y-1 disabled:cursor-default disabled:hover:translate-y-0"
+                className="block w-full cursor-zoom-in border border-black bg-white p-[clamp(8px,1.5vw,22px)] shadow-[0_34px_60px_-38px_rgba(0,0,0,.6)] transition-transform duration-500 ease-out hover:-translate-y-1"
               >
                 <span className={`relative block overflow-hidden bg-paper ${painting.portrait ? "aspect-[9/16]" : "aspect-[16/9]"}`}>
-                  {painting.ready ? (
-                    <Image
-                      src={painting.src}
-                      alt={painting.alt}
-                      fill
-                      sizes="(min-width: 1024px) 60vw, (min-width: 640px) 70vw, 86vw"
-                      className="object-cover"
-                    />
-                  ) : (
-                    <span className="grid size-full place-items-center p-2 text-center font-display text-[clamp(1.2rem,2.6vw,2.2rem)] leading-tight text-black/45 italic">
-                      Tableau à venir
-                    </span>
-                  )}
+                  <Image
+                    src={painting.src}
+                    alt={painting.alt}
+                    fill
+                    sizes="(min-width: 1024px) 60vw, (min-width: 640px) 70vw, 86vw"
+                    className="object-cover"
+                  />
                 </span>
               </button>
               <figcaption className="mt-4 flex items-baseline justify-between gap-4 border-t border-black pt-2">

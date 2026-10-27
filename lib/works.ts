@@ -1,5 +1,5 @@
 export type Painting = {
-  /** Fichier attendu dans public/images/oeuvres/. Tant qu'il manque, un cadre « tableau à venir ». */
+  /** Fichier attendu dans public/images/oeuvres/. Tant qu'il manque, le tableau n'apparaît pas sur la page. */
   src: string
   alt: string
   /** 16:9 à l'horizontale, 9:16 à la verticale. */

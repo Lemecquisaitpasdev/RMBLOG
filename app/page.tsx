@@ -15,8 +15,8 @@ import { dreamImages } from "@/lib/dream"
 import { site } from "@/lib/site"
 import { paintings } from "@/lib/works"
 
-// Un tableau ne s'accroche que si son fichier est là ; sinon, un cadre « tableau à venir ».
-const works = paintings.map((p) => ({ ...p, ready: existsSync(path.join(process.cwd(), "public", p.src)) }))
+// Un tableau ne s'accroche que si son fichier est dans public/images/oeuvres.
+const works = paintings.filter((p) => existsSync(path.join(process.cwd(), "public", p.src)))
 
 const soundcloudPlayer = `https://w.soundcloud.com/player/?${new URLSearchParams({
   url: site.soundcloud,
@@ -192,7 +192,7 @@ export default function Home() {
             <span className="bg-black px-2 [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">Mes œuvres</span>
           </h2>
           <p className="mt-4 font-mono text-[13px] text-black/70">
-            {paintings.length} tableaux signés Riyane, puis ma musique
+            {works.length} tableaux signés Riyane, puis ma musique
           </p>
         </div>
 
