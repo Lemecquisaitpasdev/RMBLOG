@@ -158,7 +158,7 @@ export default function Home() {
             </span>
           </h2>
           <p className="mt-4 font-mono text-[13px] text-black/70">
-            {aspirations.length} noms, de Socrate à aujourd&apos;hui
+            {aspirations.length} noms, de A à Z
             <span className="hidden md:inline"> · survolez un nom</span>
           </p>
           <div className="mt-10">

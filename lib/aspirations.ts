@@ -5,13 +5,13 @@ export type Aspiration = {
   role?: string
   dates?: string
   /**
-   * Crédit de la photo (Wikimedia Commons), affiché sous la liste.
+   * Crédit de la photo, affiché sous la liste.
    * Pas de crédit, pas de photo : un cadre « photo à venir » en attendant.
    */
   credit?: string
 }
 
-/** Mes aspirations préférées, dans l'ordre où je les ai citées. Photos dans public/images/aspirations/<slug>.jpg. */
+/** Mes aspirations préférées, rangées par ordre alphabétique. Photos dans public/images/aspirations/<slug>.jpg. */
 export const aspirations: Aspiration[] = [
   { slug: "mohamed-ali", name: "Mohamed Ali", role: "boxeur", dates: "1942–2016", credit: "Ira Rosenberg, 1967, domaine public" },
   { slug: "virgil-abloh", name: "Virgil Abloh", role: "designer", dates: "1980–2021", credit: "Myles Kalus Anak Jihem, CC BY-SA 4.0" },
@@ -36,6 +36,6 @@ export const aspirations: Aspiration[] = [
   { slug: "jean-marc-jancovici", name: "Jean-Marc Jancovici", role: "ingénieur, énergie et climat", dates: "né en 1962", credit: "Thinkerview, CC BY-SA 4.0" },
   { slug: "haroun", name: "Haroun", role: "humoriste", dates: "né en 1984", credit: "A ODW, CC BY-SA 4.0" },
   { slug: "julie-kegels", name: "Julie Kegels", role: "styliste, prix LVMH 2026", credit: "autoportrait de Julie Kegels, tous droits réservés" },
-]
+].sort((a, b) => a.name.localeCompare(b.name, "fr"))
 
 export const photoOf = (a: Aspiration) => (a.credit ? `/images/aspirations/${a.slug}.jpg` : null)
