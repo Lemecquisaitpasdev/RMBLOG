@@ -28,7 +28,7 @@ Images d'exemple, à remplacer par les vôtres.
 
 ## Portraits
 
-Recadrés en 4:5, sans métadonnées. Les crédits s'affichent aussi sous la liste, sur la page. Tous viennent de Wikimedia Commons, sauf ceux de Drake, Moriba Kone, Anice Lajnef et Julie Kegels, fournis pour le site.
+Recadrés en 4:5, sans métadonnées. Les crédits s'affichent aussi sous la liste, sur la page. Tous viennent de Wikimedia Commons, sauf ceux de Drake, Moriba Kone, Théo Lion, Anice Lajnef et Julie Kegels, fournis pour le site.
 
 | Fichier | Auteur | Licence |
 | --- | --- | --- |
@@ -51,6 +51,7 @@ Recadrés en 4:5, sans métadonnées. Les crédits s'affichent aussi sous la lis
 | aspirations/moriba-kone.jpg | Technikart (photo fournie) | tous droits réservés |
 | aspirations/julie-kegels.jpg | autoportrait de Julie Kegels (photo fournie) | tous droits réservés |
 | aspirations/anice-lajnef.jpg | photo fournie pour le site | tous droits réservés |
+| aspirations/theo-lion.jpg | photo fournie pour le site | tous droits réservés |
 
 ## Pochettes de jeux vidéo
 
