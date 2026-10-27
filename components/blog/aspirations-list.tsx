@@ -14,7 +14,7 @@ function BrokenIcon({ className }: { className?: string }) {
     <svg viewBox="0 0 16 16" aria-hidden className={className}>
       <path d="M2.5 1.5h7l4 4v9h-11z" fill="#fff" stroke="#808080" />
       <path d="M9.5 1.5v4h4" fill="none" stroke="#808080" />
-      <path d="M5 8l4 4m0-4l-4 4" stroke="#e00000" strokeWidth="1.6" />
+      <path d="M5 8l4 4m0-4l-4 4" stroke="#000" strokeWidth="1.6" />
     </svg>
   )
 }

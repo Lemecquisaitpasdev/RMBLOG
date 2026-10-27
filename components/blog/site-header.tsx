@@ -1,19 +1,17 @@
 "use client"
 
 import * as React from "react"
-import Link from "next/link"
+import { HeaderTabs } from "@/components/blog/notebook-tabs"
 import { Wordmark } from "@/components/blog/wordmark"
-import type { TocItem } from "@/lib/site"
 
 /**
  * L'en-tête de free-game.virgilabloh.com : texte d'intro en Courier, logo qui
- * tourne, et le sommaire « de A à Z » en bleu. Collé en haut sur les grands
- * écrans, il s'efface devant les zones plein écran et le pied de page.
+ * tourne, et les onglets du carnet sur la tranche droite. Collé en haut sur les
+ * grands écrans, il s'efface devant les zones plein écran et le pied de page.
  */
-export function SiteHeader({ intro, wordmark, items }: { intro: readonly string[]; wordmark: string; items: TocItem[] }) {
+export function SiteHeader({ intro, wordmark }: { intro: readonly string[]; wordmark: string }) {
   const ref = React.useRef<HTMLElement>(null)
   const fill = React.useRef<HTMLSpanElement>(null)
-  const rows = Math.ceil(items.length / 2)
 
   // Hauteur de l'en-tête → --header-h, pour les ancres et les éléments collants.
   React.useEffect(() => {
@@ -26,7 +24,7 @@ export function SiteHeader({ intro, wordmark, items }: { intro: readonly string[
     return () => ro.disconnect()
   }, [])
 
-  // La pilule rouge se remplit avec la lecture de la page.
+  // La pilule noire se remplit avec la lecture de la page.
   React.useEffect(() => {
     let frame = 0
     const update = () => {
@@ -72,35 +70,14 @@ export function SiteHeader({ intro, wordmark, items }: { intro: readonly string[
             <Wordmark text={wordmark} />
           </div>
           <div className="mt-2 flex items-center gap-3">
-            <span className="relative block h-[22px] w-[200px] overflow-hidden rounded-full border-2 border-retro-red" aria-hidden>
-              <span ref={fill} className="absolute inset-0 origin-left scale-x-0 rounded-full bg-retro-red" />
+            <span className="relative block h-[22px] w-[200px] overflow-hidden rounded-full border-2 border-black" aria-hidden>
+              <span ref={fill} className="absolute inset-0 origin-left scale-x-0 rounded-full bg-black" />
             </span>
             <span className="font-mono text-[11px] text-muted-foreground">lecture en cours…</span>
           </div>
         </div>
 
-        <nav aria-labelledby="sommaire" className="lg:pt-14">
-          <h2 id="sommaire" className="text-center font-sans text-[19px] leading-[1.15] font-bold">
-            DE A À Z
-            <br />
-            (SOMMAIRE)
-          </h2>
-          {items.length ? (
-            <ol
-              className="mt-5 grid gap-x-12 font-sans text-[clamp(1rem,1.42vw,1.3rem)] leading-[1.12] font-bold uppercase sm:grid-flow-col sm:grid-rows-[repeat(var(--rows),auto)] lg:mx-auto lg:w-fit"
-              style={{ "--rows": rows } as React.CSSProperties}
-            >
-              {items.map((item) => (
-                <li key={item.href} className="flex gap-[0.3em]">
-                  <span className="w-[2.1ch] shrink-0 text-right text-link tabular-nums">{item.n}.</span>
-                  <Link href={item.href} className="text-link decoration-2 underline-offset-2 hover:underline">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ol>
-          ) : null}
-        </nav>
+        <HeaderTabs />
       </div>
     </header>
   )

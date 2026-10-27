@@ -18,25 +18,38 @@ export const site = {
     "Ce carnet est écrit à la main, publié sans algorithme et archivé comme au temps des pages perso en PHP.",
   ],
 
-  /** Le grand titre au pinceau du bandeau d'accueil. */
-  heroTitle: "CARNET LIBRE",
+  /** Le titre du carnet, en Garamond ; le dernier mot passe en italique. */
+  heroTitle: "Carnet libre",
+  /** La ligne sous le titre, comme sur la page de garde d'un vieux carnet. */
+  dateline: "tenu par RM · ouvert en 2026",
 
   /** Liens du pied de page. Remplacez les « # » par vos vrais profils. */
   social: [
     { label: "Instagram", href: "#" },
     { label: "GitHub", href: "https://github.com/lemecquisaitpasdev" },
     { label: "Are.na", href: "#" },
+    { label: "SoundCloud", href: "https://soundcloud.com/user-869323810" },
   ],
+  /** Ma musique : le profil SoundCloud lu dans « Mes œuvres ». */
+  soundcloud: "https://soundcloud.com/user-869323810",
   /** Adresse d'exemple : à remplacer par la vôtre. */
   email: "contact@example.com",
 } as const
 
 export type Site = typeof site
 
-export type TocItem = { n: number; label: string; href: string }
+/** Un onglet du carnet : le menu de l'en-tête et la tranche à droite de l'écran. */
+export type NotebookTab = {
+  label: string
+  href: string
+  /** Les sections de la page qui allument l'onglet quand on les lit. */
+  sections: readonly string[]
+}
 
-/**
- * Le sommaire « De A à Z » de l'en-tête. Vide pour l'instant : ajoutez une
- * entrée par ligne, par exemple { n: 1, label: "Mon article", href: "/articles/mon-article" }.
- */
-export const toc: TocItem[] = []
+export const tabs: NotebookTab[] = [
+  { label: "Mes aspirations", href: "/#aspirations", sections: ["aspirations"] },
+  { label: "Mes divertissements préférés", href: "/#jeux", sections: ["jeux"] },
+  { label: "Mes investissements en direct", href: "/#portefeuille", sections: ["portefeuille"] },
+  { label: "Mes réflexions", href: "/#benjamins", sections: ["benjamins", "kaaba", "reve"] },
+  { label: "Mes œuvres", href: "/#oeuvres", sections: ["oeuvres"] },
+]

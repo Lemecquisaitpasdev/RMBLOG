@@ -17,8 +17,10 @@
   --font-brush: var(--font-marker), "Permanent Marker", cursive;
   --font-wordmark: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
   --font-italic: var(--font-playfair), Georgia, serif;
+  /* Le titre du carnet et les onglets : une Garamond, éditoriale et intemporelle. */
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Garamond, "Times New Roman", serif;
   --color-link: var(--link);
-  --color-retro-red: var(--retro-red);
+  --color-paper: var(--paper);
   --color-win-face: var(--win-face);
   --color-win-shadow: var(--win-shadow);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -96,7 +98,8 @@
 
   /* Rétro */
   --link: #1414ff;
-  --retro-red: #f20d0d;
+  /* Le papier des onglets et des œuvres : un ivoire de vieux carnet. */
+  --paper: #f3eee3;
   --win-face: #c0c0c0;
   --win-shadow: #808080;
   --win-title: linear-gradient(90deg, #22409a 0%, #5a7fd1 60%, #8fb0ea 100%);
@@ -190,7 +193,7 @@
 }
 
 @layer components {
-  /* Lien bleu souligné, rouge au survol : la règle CSS de 2003. */
+  /* Lien bleu souligné, noir au survol : la règle CSS de 2003, en plus sobre. */
   .retro-link {
     color: var(--link);
     text-decoration: underline;
@@ -198,7 +201,7 @@
     text-decoration-thickness: 1px;
   }
   .retro-link:hover {
-    color: var(--retro-red);
+    color: #000;
   }
   .retro-link:focus-visible {
     outline: 1px dotted currentColor;

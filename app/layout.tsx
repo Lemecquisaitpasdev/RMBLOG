@@ -1,15 +1,18 @@
 import type { Metadata } from "next"
-import { Archivo, Courier_Prime, Permanent_Marker, Playfair_Display } from "next/font/google"
+import { Archivo, Cormorant_Garamond, Courier_Prime, Permanent_Marker, Playfair_Display } from "next/font/google"
 import { BrushFilter } from "@/components/blog/brush"
 import { SiteFooter } from "@/components/blog/site-footer"
+import { TabRail } from "@/components/blog/notebook-tabs"
 import { SiteHeader } from "@/components/blog/site-header"
-import { site, toc } from "@/lib/site"
+import { site } from "@/lib/site"
 import "./globals.css"
 
 // Le logo : une grotesque très grasse qu'on peut condenser (axe wdth).
 const archivo = Archivo({ subsets: ["latin"], axes: ["wdth"], variable: "--font-archivo" })
 // Le pinceau.
 const marker = Permanent_Marker({ subsets: ["latin"], weight: "400", variable: "--font-marker" })
+// Le titre du carnet et les onglets : une Garamond à grand contraste, de 300 à 700.
+const cormorant = Cormorant_Garamond({ subsets: ["latin"], style: ["normal", "italic"], variable: "--font-cormorant" })
 // Les sous-titres en italique.
 const playfair = Playfair_Display({ subsets: ["latin"], style: "italic", variable: "--font-playfair" })
 // Repli pour Courier New quand le système ne l'a pas.
@@ -28,11 +31,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang={site.lang}
       data-scroll-behavior="smooth"
-      className={`${archivo.variable} ${marker.variable} ${playfair.variable} ${courier.variable} antialiased`}
+      className={`${archivo.variable} ${cormorant.variable} ${marker.variable} ${playfair.variable} ${courier.variable} antialiased`}
     >
       <body>
         <BrushFilter />
-        <SiteHeader intro={site.intro} wordmark={site.wordmark} items={toc} />
+        <SiteHeader intro={site.intro} wordmark={site.wordmark} />
+        <TabRail />
         <main id="contenu">{children}</main>
         <SiteFooter />
       </body>

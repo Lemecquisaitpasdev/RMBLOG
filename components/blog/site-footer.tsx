@@ -1,6 +1,6 @@
 import WildHuntFooter from "@/components/ui/wild-hunt-footer"
 import { CoverSection } from "@/components/blog/cover-section"
-import { site } from "@/lib/site"
+import { site, tabs } from "@/lib/site"
 
 const SANS = '"Helvetica Neue", Helvetica, Arial, sans-serif'
 const MONO = '"Courier New", Courier, monospace'
@@ -22,16 +22,8 @@ export function SiteFooter() {
             ],
           },
           {
-            title: "Images",
-            links: [
-              { label: "Portrait", href: "/#portrait" },
-              { label: "Les Benjamins", href: "/#benjamins" },
-              { label: "La Kaaba", href: "/#kaaba" },
-              { label: "Le portefeuille", href: "/#portefeuille" },
-              { label: "Mon rêve", href: "/#reve" },
-              { label: "Mes jeux vidéo", href: "/#jeux" },
-              { label: "Mes aspirations", href: "/#aspirations" },
-            ],
+            title: "Le carnet",
+            links: tabs.map((tab) => ({ label: tab.label, href: tab.href })),
           },
           { title: "Ailleurs", links: site.social.map((s) => ({ ...s })) },
           {
@@ -44,6 +36,7 @@ export function SiteFooter() {
         ]}
         colophon="Peinture : Peter Nicolai Arbo, Åsgårdsreien (La Chasse sauvage d'Odin), 1872, Nasjonalmuseet, Oslo — domaine public, via Wikimedia Commons. Photos du carnet : Unsplash, via Lorem Picsum. Le mot du bas est dessiné cellule par cellule, sans police."
         legal={`© 2026 ${site.name} · carnet personnel`}
+        preset="ink"
         fontFamily={SANS}
         monoFamily={MONO}
       />

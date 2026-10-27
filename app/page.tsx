@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs"
+import path from "node:path"
 import Image from "next/image"
 import { AspirationsList } from "@/components/blog/aspirations-list"
 import { CoverSection } from "@/components/blog/cover-section"
@@ -5,10 +7,27 @@ import { DreamGallery } from "@/components/blog/dream-gallery"
 import { GameShelf } from "@/components/blog/game-shelf"
 import { Hero } from "@/components/blog/hero"
 import { Portfolio } from "@/components/blog/portfolio"
+import { WorksGallery } from "@/components/blog/works-gallery"
 import { AsciiEffect } from "@/components/ui/ascii-effect"
 import { AsciiArt } from "@/components/ui/kaaba"
 import { aspirations } from "@/lib/aspirations"
 import { dreamImages } from "@/lib/dream"
+import { site } from "@/lib/site"
+import { paintings } from "@/lib/works"
+
+// Un tableau ne s'accroche que si son fichier est là ; sinon, un cadre « tableau à venir ».
+const works = paintings.map((p) => ({ ...p, ready: existsSync(path.join(process.cwd(), "public", p.src)) }))
+
+const soundcloudPlayer = `https://w.soundcloud.com/player/?${new URLSearchParams({
+  url: site.soundcloud,
+  color: "#000000",
+  auto_play: "false",
+  hide_related: "true",
+  show_comments: "false",
+  show_user: "true",
+  show_reposts: "false",
+  show_teaser: "false",
+})}`
 
 export default function Home() {
   return (
@@ -156,6 +175,50 @@ export default function Home() {
         </div>
         <p className="pointer-events-none absolute bottom-4 left-4 bg-black px-2 py-1 font-mono text-[12px] text-white">
           fig. 8 — mes aspirations préférées
+        </p>
+      </CoverSection>
+
+      <CoverSection
+        id="oeuvres"
+        aria-labelledby="oeuvres-titre"
+        threshold={0.3}
+        className="relative w-full scroll-mt-0 overflow-hidden bg-paper pt-14 pb-24 text-black lg:pt-20"
+      >
+        <div className="mx-auto max-w-[1320px] px-4 sm:px-8">
+          <h2
+            id="oeuvres-titre"
+            className="font-sans text-[clamp(2rem,4vw,3.6rem)] leading-[1.08] font-bold tracking-[-0.02em] text-white uppercase"
+          >
+            <span className="bg-black px-2 [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">Mes œuvres</span>
+          </h2>
+          <p className="mt-4 font-mono text-[13px] text-black/70">
+            {paintings.length} tableaux signés Riyane, puis ma musique
+          </p>
+        </div>
+
+        <WorksGallery paintings={works} className="mt-10" />
+
+        <div className="mx-auto mt-20 grid max-w-[1320px] gap-8 px-4 sm:px-8 md:grid-cols-[minmax(0,22rem)_1fr] md:gap-12">
+          <div>
+            <h3 className="font-display text-[clamp(2.4rem,4.4vw,3.6rem)] leading-[0.95] font-normal italic">Ma musique</h3>
+            <p className="mt-4 font-mono text-[13px] leading-[1.6] text-black/75">
+              La musique que j&apos;ai créée, à écouter ici ou sur SoundCloud.
+            </p>
+            <a href={site.soundcloud} target="_blank" rel="noopener" className="retro-link mt-3 inline-block font-mono text-[13px]">
+              {site.soundcloud.replace("https://", "")} ↗
+            </a>
+          </div>
+          <iframe
+            title="Ma musique sur SoundCloud"
+            src={soundcloudPlayer}
+            loading="lazy"
+            allow="autoplay"
+            className="h-[450px] w-full border border-black bg-white"
+          />
+        </div>
+
+        <p className="pointer-events-none absolute bottom-4 left-4 bg-black px-2 py-1 font-mono text-[12px] text-white">
+          fig. 9 — mes œuvres · tableaux et musique
         </p>
       </CoverSection>
     </>
