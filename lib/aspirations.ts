@@ -26,7 +26,7 @@ export const aspirations: Aspiration[] = [
   { slug: "tom-ford", name: "Tom Ford", role: "styliste et cinéaste", dates: "né en 1961", credit: "Nicolas Genin, CC BY-SA 2.0" },
   { slug: "tadao-ando", name: "Tadao Ando", role: "architecte", dates: "né en 1941", credit: "Christopher Schriner, CC BY-SA 2.0" },
   { slug: "moriba-kone", name: "Moriba Kone", credit: "photo Technikart, tous droits réservés" },
-  { slug: "enzo-destouches", name: "Enzo Destouches" },
+  { slug: "enzo-destouches", name: "Enzo Destouches", role: "ami proche · penseur, artiste, chercheur en robotique, cryptographe", credit: "photo fournie, tous droits réservés" },
   { slug: "adam-sandler", name: "Adam Sandler", role: "acteur et humoriste", dates: "né en 1966", credit: "Bryan Berlin, CC BY-SA 4.0" },
   { slug: "younes-bendjima", name: "Younes Bendjima", role: "mannequin" },
   { slug: "idriss-aberkane", name: "Idriss Aberkane", role: "essayiste et conférencier", dates: "né en 1986", credit: "Vivre et réussir en Afrique, CC BY 4.0" },
