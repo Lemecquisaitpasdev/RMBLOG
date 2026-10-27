@@ -60,6 +60,12 @@ Recadrés en 4:5, sans métadonnées. Les crédits s'affichent aussi sous la lis
 
 - `jeux/*.jpg` : pochettes officielles des seize jeux, © leurs éditeurs (Rockstar Games, Sony Interactive Entertainment, Focus Entertainment, Ubisoft, Electronic Arts, Activision, Bungie / Activision, Square Enix). Copiées en basse définition depuis les articles de la Wikipédia anglophone, pour illustrer la liste.
 
+## Les contenus du mois
+
+- `mois/finis-les.jpg` : pochette de *FINIS-LES*, La Fève (Walone, 2026), © ses ayants droit, via Deezer.
+- `mois/ramdane-touhami.jpg`, `mois/la-grande-renaissance.jpg` : miniatures des vidéos YouTube (État de la Culture ; Idriss J. Aberkane), © leurs auteurs.
+- `mois/a-venir.svg` : nacelle « à venir », dessinée pour le site.
+
 ## Polices
 
 - `public/fonts/Geist-Variable.woff2`, `GeistMono-Variable.woff2` : Geist et Geist Mono, © Vercel et basement.studio, licence SIL Open Font License 1.1 (paquet npm `geist`).

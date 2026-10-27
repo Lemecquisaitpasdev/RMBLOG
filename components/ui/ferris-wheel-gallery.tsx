@@ -10,6 +10,8 @@ export interface FerrisWheelItem {
   title: string;
   year?: string | number;
   discipline?: string;
+  /** Where the work lives (a listen, a watch…), shown under the caption. */
+  link?: { href: string; label: string };
 }
 
 /** The gallery's own words, for a page in another language. */
@@ -403,6 +405,7 @@ export function FerrisWheelGallery({
                 <p className="mb-2 border-l-2 border-chart-2 pl-2 font-mono text-[10px] tracking-wider text-muted-foreground">{labels.item} {String(view.index + 1).padStart(2, "0")}</p>
                 <h3 className="text-xl font-medium leading-tight tracking-tight @min-[600px]/ferris:text-2xl @min-[900px]/ferris:text-3xl">{current.title}</h3>
                 <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">{[current.discipline, current.year].filter((value) => value !== undefined && value !== "").join(" · ")}</p>
+                {current.link && <a href={current.link.href} target="_blank" rel="noopener noreferrer" className={`mt-3 inline-flex items-center gap-1 rounded-sm text-xs font-medium underline underline-offset-4 hover:no-underline ${focusRing}`}>{current.link.label}<ArrowRight className="size-3 -rotate-45" aria-hidden="true" /></a>}
               </div>
               <div className="mt-5 flex flex-wrap items-center gap-2 @min-[600px]/ferris:mt-6">
                 <button type="button" data-previous aria-label="Previous image" disabled={total < 2} onClick={() => request(selected - 1)} className={`flex size-9 shrink-0 items-center justify-center rounded-full border border-border bg-background hover:bg-accent disabled:opacity-40 ${focusRing}`}><ArrowLeft className="size-3.5" aria-hidden="true" /></button>
