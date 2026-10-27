@@ -31,7 +31,7 @@ export const aspirations: Aspiration[] = [
   { slug: "younes-bendjima", name: "Younes Bendjima", role: "mannequin" },
   { slug: "idriss-aberkane", name: "Idriss Aberkane", role: "essayiste et conférencier", dates: "né en 1986", credit: "Vivre et réussir en Afrique, CC BY 4.0" },
   { slug: "theo-lion", name: "Theo Lion" },
-  { slug: "anice-lajnef", name: "Anice Lajnef" },
+  { slug: "anice-lajnef", name: "Anice Lajnef", role: "ancien trader, économiste et écrivain" },
   { slug: "arthur-kar", name: "Arthur Kar", role: "fondateur de L'Art de L'Automobile" },
   { slug: "jean-marc-jancovici", name: "Jean-Marc Jancovici", role: "ingénieur, énergie et climat", dates: "né en 1962", credit: "Thinkerview, CC BY-SA 4.0" },
   { slug: "haroun", name: "Haroun", role: "humoriste", dates: "né en 1984", credit: "A ODW, CC BY-SA 4.0" },
