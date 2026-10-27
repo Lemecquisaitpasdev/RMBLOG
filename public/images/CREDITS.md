@@ -32,7 +32,7 @@ Images d'exemple, à remplacer par les vôtres.
 
 ## Portraits
 
-Recadrés en 4:5, sans métadonnées. Les crédits s'affichent aussi sous la liste, sur la page. Tous viennent de Wikimedia Commons, sauf ceux de Moriba Kone et de Julie Kegels, fournis pour le site.
+Recadrés en 4:5, sans métadonnées. Les crédits s'affichent aussi sous la liste, sur la page. Tous viennent de Wikimedia Commons, sauf ceux de Drake, Moriba Kone et Julie Kegels, fournis pour le site.
 
 | Fichier | Auteur | Licence |
 | --- | --- | --- |
@@ -45,7 +45,7 @@ Recadrés en 4:5, sans métadonnées. Les crédits s'affichent aussi sous la lis
 | aspirations/leibniz.jpg | Christoph Bernhard Francke, v. 1695, Herzog Anton Ulrich-Museum | domaine public |
 | aspirations/socrate.jpg | buste romain du Louvre, photo Eric Gaba | CC BY-SA 2.5 |
 | aspirations/cristiano-ronaldo.jpg | Bryan Berlin, 2026 | CC BY-SA 4.0 |
-| aspirations/drake.jpg | GabboT, 2017 | CC BY-SA 2.0 |
+| aspirations/drake.jpg | photo fournie pour le site | tous droits réservés |
 | aspirations/tom-ford.jpg | Nicolas Genin, 2009 | CC BY-SA 2.0 |
 | aspirations/tadao-ando.jpg | Christopher Schriner, 2004 | CC BY-SA 2.0 |
 | aspirations/adam-sandler.jpg | Bryan Berlin, 2025 | CC BY-SA 4.0 |

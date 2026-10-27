@@ -22,7 +22,7 @@ export const aspirations: Aspiration[] = [
   { slug: "leibniz", name: "Leibniz", role: "philosophe et mathématicien", dates: "1646–1716", credit: "Christoph Bernhard Francke, v. 1695, Herzog Anton Ulrich-Museum, domaine public" },
   { slug: "socrate", name: "Socrate", role: "philosophe", dates: "v. 470–399 av. J.-C.", credit: "buste du Louvre, photo Eric Gaba, CC BY-SA 2.5" },
   { slug: "cristiano-ronaldo", name: "Cristiano Ronaldo", role: "footballeur", dates: "né en 1985", credit: "Bryan Berlin, CC BY-SA 4.0" },
-  { slug: "drake", name: "Drake", role: "rappeur", dates: "né en 1986", credit: "GabboT, CC BY-SA 2.0" },
+  { slug: "drake", name: "Drake", role: "rappeur", dates: "né en 1986", credit: "photo fournie, tous droits réservés" },
   { slug: "tom-ford", name: "Tom Ford", role: "styliste et cinéaste", dates: "né en 1961", credit: "Nicolas Genin, CC BY-SA 2.0" },
   { slug: "tadao-ando", name: "Tadao Ando", role: "architecte", dates: "né en 1941", credit: "Christopher Schriner, CC BY-SA 2.0" },
   { slug: "moriba-kone", name: "Moriba Kone", credit: "photo Technikart, tous droits réservés" },
