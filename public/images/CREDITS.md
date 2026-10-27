@@ -30,9 +30,9 @@ Images d'exemple, à remplacer par les vôtres.
 
 - `reve/01.jpg` à `reve/08.jpg` : les paysages de la démo de la galerie 3D (« 3d-gallery-photography »), copiés depuis cdn.21st.dev, redimensionnés et sans métadonnées. Photographes non indiqués par la démo.
 
-## Portraits (Wikimedia Commons)
+## Portraits
 
-Recadrés en 4:5, sans métadonnées. Les crédits s'affichent aussi sous la liste, sur la page.
+Recadrés en 4:5, sans métadonnées. Les crédits s'affichent aussi sous la liste, sur la page. Tous viennent de Wikimedia Commons, sauf celui de Moriba Kone, fourni pour le site.
 
 | Fichier | Auteur | Licence |
 | --- | --- | --- |
@@ -52,6 +52,7 @@ Recadrés en 4:5, sans métadonnées. Les crédits s'affichent aussi sous la lis
 | aspirations/idriss-aberkane.jpg | Vivre et réussir en Afrique, 2026 | CC BY 4.0 |
 | aspirations/jean-marc-jancovici.jpg | Thinkerview, 2024 | CC BY-SA 4.0 |
 | aspirations/haroun.jpg | A ODW, 2020 | CC BY-SA 4.0 |
+| aspirations/moriba-kone.jpg | Technikart (photo fournie) | tous droits réservés |
 
 ## Pochettes de jeux vidéo
 

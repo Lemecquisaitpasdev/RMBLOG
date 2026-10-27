@@ -165,7 +165,7 @@ export default function Home() {
             <AspirationsList />
           </div>
           <p className="mt-8 max-w-[110ch] font-mono text-[11px] leading-[1.6] text-black/60">
-            Photos Wikimedia Commons —{" "}
+            Photos —{" "}
             {aspirations
               .filter((a) => a.credit)
               .map((a) => `${a.name} : ${a.credit}`)
