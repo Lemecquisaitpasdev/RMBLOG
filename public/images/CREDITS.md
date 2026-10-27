@@ -28,7 +28,7 @@ Images d'exemple, à remplacer par les vôtres.
 
 ## Portraits
 
-Recadrés en 4:5, sans métadonnées. Les crédits s'affichent aussi sous la liste, sur la page. Tous viennent de Wikimedia Commons, sauf ceux de Drake, Moriba Kone, Enzo Destouches, Younes Bendjima, Théo Lion, Anice Lajnef, Arthur Kar et Julie Kegels, fournis pour le site.
+Recadrés en 4:5, sans métadonnées. Les crédits s'affichent aussi sous la liste, sur la page. Tous viennent de Wikimedia Commons, sauf ceux de Drake, Moriba Koné, Enzo Destouches, Younes Bendjima, Théo Lion, Anice Lajnef, Arthur Kar et Julie Kegels, fournis pour le site.
 
 | Fichier | Auteur | Licence |
 | --- | --- | --- |

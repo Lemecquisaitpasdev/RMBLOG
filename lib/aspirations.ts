@@ -25,7 +25,7 @@ export const aspirations: Aspiration[] = [
   { slug: "drake", name: "Drake", role: "rappeur", dates: "né en 1986", credit: "photo fournie, tous droits réservés" },
   { slug: "tom-ford", name: "Tom Ford", role: "styliste et cinéaste", dates: "né en 1961", credit: "Nicolas Genin, CC BY-SA 2.0" },
   { slug: "tadao-ando", name: "Tadao Ando", role: "architecte", dates: "né en 1941", credit: "Christopher Schriner, CC BY-SA 2.0" },
-  { slug: "moriba-kone", name: "Moriba Kone", credit: "photo Technikart, tous droits réservés" },
+  { slug: "moriba-kone", name: "Moriba Koné", role: "DJ, conseil culture pour les marques de luxe · cofondateur d'AppleCore, fondateur de L'État de la Culture", credit: "photo Technikart, tous droits réservés" },
   { slug: "enzo-destouches", name: "Enzo Destouches", role: "ami proche · penseur, artiste, chercheur en robotique, cryptographe", credit: "photo fournie, tous droits réservés" },
   { slug: "adam-sandler", name: "Adam Sandler", role: "acteur et humoriste", dates: "né en 1966", credit: "Bryan Berlin, CC BY-SA 4.0" },
   { slug: "younes-bendjima", name: "Younes Bendjima", role: "mannequin, influence mode · philosophe, résilience, droiture", credit: "photo fournie, tous droits réservés" },
