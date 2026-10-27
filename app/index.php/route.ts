@@ -11,6 +11,7 @@ const PAGES: Record<string, string> = {
   jeux: "/#jeux",
   aspirations: "/#aspirations",
   oeuvres: "/#oeuvres",
+  contenus: "/#contenus",
 }
 
 /**

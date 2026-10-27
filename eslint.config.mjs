@@ -8,7 +8,7 @@ const eslintConfig = defineConfig([
   // Composants copiés tels quels depuis 21st.dev : leur code d'origine (three.js, DOM à la main)
   // mute ses matériaux et lit ses refs pendant le rendu, ce que les règles du React Compiler refusent.
   {
-    files: ["components/ui/finance-bento.tsx", "components/ui/3d-gallery-photography.tsx"],
+    files: ["components/ui/finance-bento.tsx", "components/ui/3d-gallery-photography.tsx", "components/ui/ferris-wheel-gallery.tsx"],
     rules: {
       "@typescript-eslint/ban-ts-comment": "off",
       "@typescript-eslint/no-unused-expressions": "off",

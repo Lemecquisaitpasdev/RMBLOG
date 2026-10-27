@@ -9,9 +9,11 @@ import { Hero } from "@/components/blog/hero"
 import { Portfolio } from "@/components/blog/portfolio"
 import { WorksGallery } from "@/components/blog/works-gallery"
 import { AsciiEffect } from "@/components/ui/ascii-effect"
+import { FerrisWheelGallery } from "@/components/ui/ferris-wheel-gallery"
 import { AsciiArt } from "@/components/ui/kaaba"
 import { aspirations } from "@/lib/aspirations"
 import { dreamImages } from "@/lib/dream"
+import { monthly } from "@/lib/monthly"
 import { site } from "@/lib/site"
 import { paintings } from "@/lib/works"
 
@@ -221,6 +223,45 @@ export default function Home() {
           fig. 9 — mes œuvres · tableaux et musique
         </p>
       </CoverSection>
+
+      {monthly.items.length ? (
+        <CoverSection
+          id="contenus"
+          aria-labelledby="contenus-titre"
+          threshold={0.35}
+          className="relative w-full scroll-mt-0 bg-white px-4 pt-14 pb-20 text-black sm:px-8 lg:pt-20"
+        >
+          <div className="mx-auto max-w-[1100px]">
+            <h2
+              id="contenus-titre"
+              className="font-sans text-[clamp(2rem,4vw,3.6rem)] leading-[1.08] font-bold tracking-[-0.02em] text-white uppercase"
+            >
+              <span className="bg-black px-2 [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">
+                Les contenus du mois
+              </span>
+            </h2>
+            <p className="mt-3 font-display text-[clamp(1.6rem,3vw,2.4rem)] leading-none italic">{monthly.month}</p>
+            <FerrisWheelGallery
+              className="mt-10"
+              items={monthly.items}
+              autoplay
+              interval={3600}
+              scrollToTurn={false}
+              aria-label={`Les contenus du mois, ${monthly.month}`}
+              labels={{
+                onView: "À L'AFFICHE",
+                count: "CONTENUS",
+                item: "N°",
+                help: "Faites glisser la roue ou utilisez ← →",
+                unavailable: "Image indisponible",
+              }}
+            />
+          </div>
+          <p className="pointer-events-none absolute bottom-4 left-4 bg-black px-2 py-1 font-mono text-[12px] text-white">
+            fig. 10 — les contenus du mois · grande roue (21st.dev)
+          </p>
+        </CoverSection>
+      ) : null}
     </>
   )
 }

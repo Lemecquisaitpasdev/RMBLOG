@@ -31,6 +31,7 @@ npm run lint
 | `lib/posts.ts` | Les articles (blocs : paragraphe, intertitre, citation, liste, image, vidéo YouTube). `[texte](/lien)` et `**gras**` sont reconnus |
 | `lib/portfolio.ts` | Le portefeuille de 50 000 000 $ : la base, sa répartition (dollar, euro, SPY, QQQ, BTC, ETH, SOL) et les exemples de la démo (paiements, objectifs, flux) |
 | `lib/live-quotes.ts` | Les connecteurs de cours (Binance, Finnhub) : reconnexion automatique, un cours par seconde |
+| `lib/monthly.ts` | Les contenus du mois sur la grande roue : le mois affiché et une entrée par contenu (image dans `public/images/mois/`, titre, type, date). Liste vide : la section n'apparaît pas |
 | `lib/dream.ts` | Les images de la galerie « Mon rêve, sûrement fabriqué par les autres » |
 | `lib/aspirations.ts` | Mes aspirations préférées : nom, rôle, dates, crédit de la photo ; photos dans `public/images/aspirations/<slug>.jpg` (sans crédit, un cadre « photo à venir ») |
 | `lib/games.ts` | Mes jeux vidéo préférés : titre, année, studio, couleur d'accent ; pochettes dans `public/images/jeux/<slug>.jpg` |
@@ -53,6 +54,7 @@ npm run lint
 | `ascii-effect.tsx` : effet ASCII « All about the Benjamins », réimplémenté en Canvas2D (25 modes de rendu, réglages couleur, flous, post-effets, lumières, masque, animations) | sections plein écran `#portrait` et `#benjamins` (Franklin), sous le bandeau |
 | `kaaba.tsx` : vidéo ASCII « kaaba » de 21st.dev | section plein écran `#kaaba` |
 | `finance-bento.tsx` : tableau de bord de vasnev.art (patrimoine, répartition, crypto, actions…) | section `#portefeuille` (`components/blog/live-portfolio.tsx`) |
+| `ferris-wheel-gallery.tsx` : grande roue de vignettes, la nacelle choisie s'affiche en grand | section `#contenus` (les contenus du mois), après « Mes œuvres » |
 | `3d-gallery-photography.tsx` : galerie 3D infinie (three.js) | section plein écran `#reve`, avant le pied de page (`components/blog/dream-gallery.tsx`) |
 
 Les composants sont copiés dans `components/ui` parce que c'est le dossier de la convention shadcn : la CLI (`npx shadcn add …`) y dépose ses composants et l'alias `@/components/ui` de `components.json` pointe dessus. Tout ce qui est propre au blog vit à côté, dans `components/blog`.
@@ -67,6 +69,7 @@ Les composants sont copiés dans `components/ui` parce que c'est le dossier de l
 Retouches apportées aux deux derniers, le reste est d'origine :
 
 - `finance-bento.tsx` : montants en millions (`$50.0M`), compteur à points assez large pour huit chiffres et plus (il rétrécit sur mobile), autonomie affichée en années au-delà de deux ans, variation crypto calculée au lieu d'être écrite en dur, et une entrée `live` qui redessine les cartes chaque seconde sans rejouer leur apparition.
+- `ferris-wheel-gallery.tsx` : `labels` pour mettre ses mots en français, et `scrollToTurn={false}` pour que la molette fasse défiler la page au lieu de tourner la roue (on tourne à la souris, au doigt, aux flèches).
 - `3d-gallery-photography.tsx` : elle écoute sa propre toile (la page en compte plusieurs), transmet enfin `speed` et `visibleCount`, s'arrête hors de l'écran, et `followPageScroll` la fait avancer avec le défilement de la page au lieu de capturer la molette (sinon on resterait coincé sur la section).
 
 ## Le portefeuille en direct
