@@ -423,6 +423,7 @@ export function KindleReader({ book, backHref = "/livres" }: { book: ReaderBook;
                       <img src={book.cover} alt={`Couverture de ${book.title}`} className="mt-0 mb-8 max-h-[58%] max-w-[70%] shadow-[0_12px_30px_-14px_rgba(0,0,0,.5)]" />
                     ) : null}
                     <h1 className="m-0 text-[1.6em]">{book.title}</h1>
+                    {book.subtitle ? <p className="mt-2 indent-0 text-[0.95em]">{book.subtitle}</p> : null}
                     <p className="mt-3 indent-0 italic" style={{ color: theme.muted }}>
                       {book.author}
                       {book.year ? `, ${book.year}` : ""}
@@ -442,13 +443,13 @@ export function KindleReader({ book, backHref = "/livres" }: { book: ReaderBook;
                       <h2>{current.title}</h2>
                     </header>
                     {current.paragraphs?.map((paragraph, k) => (
-                      <p key={k} data-lettrine={k === 0 && /^\p{L}/u.test(paragraph) ? "" : undefined}>
+                      <p key={k} data-lettrine={k === 0 && paragraph.length > 120 && /^\p{L}/u.test(paragraph) ? "" : undefined}>
                         {paragraph}
                       </p>
                     ))}
                   </>
                 )}
-                <span data-end className="block h-px" />
+                <span data-end className="block h-0" />
               </div>
             </div>
           </div>

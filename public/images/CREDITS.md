@@ -66,6 +66,10 @@ Recadrés en 4:5, sans métadonnées. Les crédits s'affichent aussi sous la lis
 - `mois/ramdane-touhami.jpg`, `mois/la-grande-renaissance.jpg` : miniatures des vidéos YouTube (État de la Culture ; Idriss J. Aberkane), © leurs auteurs.
 - `mois/a-venir.svg` : nacelle « à venir », dessinée pour le site.
 
+## Mes livres
+
+- `livres/la-distinction.jpg` : couverture de *La Distinction*, Pierre Bourdieu (Les Éditions de Minuit, coll. « Le sens commun », 1979), © Les Éditions de Minuit. Reproduite pour présenter le livre sur l'étagère ; le texte n'est pas publié.
+
 ## Polices
 
 - `public/fonts/Geist-Variable.woff2`, `GeistMono-Variable.woff2` : Geist et Geist Mono, © Vercel et basement.studio, licence SIL Open Font License 1.1 (paquet npm `geist`).

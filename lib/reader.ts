@@ -22,6 +22,7 @@ export type ReaderBook = {
   /** Clé sous laquelle ce navigateur retient la page en cours. */
   key: string
   title: string
+  subtitle?: string
   author: string
   year?: number
   cover?: string
@@ -38,6 +39,7 @@ export function fromBook(book: Book): ReaderBook {
   return {
     key: book.slug,
     title: book.title,
+    subtitle: book.subtitle,
     author: book.author,
     year: book.year,
     cover: book.cover,
@@ -47,7 +49,7 @@ export function fromBook(book: Book): ReaderBook {
       { title: book.title, titlePage: true, chars: 0 },
       ...book.chapters.map((chapter, i) => ({
         title: chapter.title,
-        number: String(i + 1),
+        number: book.edition === "Sommaire" ? undefined : String(i + 1),
         paragraphs: chapter.paragraphs,
         chars: chapter.paragraphs.reduce((sum, paragraph) => sum + paragraph.length, 0),
       })),
