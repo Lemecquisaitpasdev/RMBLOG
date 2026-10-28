@@ -364,6 +364,18 @@
     margin: 0;
     font-size: 1.45em;
   }
+  .liseuse-texte .liseuse-sommaire {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+    hyphens: manual;
+  }
+  .liseuse-sommaire li {
+    margin: 0 0 0.45em;
+    padding-left: 1.2em;
+    text-indent: -1.2em;
+  }
   .liseuse-texte [data-lettrine] {
     text-indent: 0;
   }

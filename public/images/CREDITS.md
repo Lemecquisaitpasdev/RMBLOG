@@ -69,6 +69,7 @@ Recadrés en 4:5, sans métadonnées. Les crédits s'affichent aussi sous la lis
 ## Mes livres
 
 - `livres/la-distinction.jpg` : couverture de *La Distinction*, Pierre Bourdieu (Les Éditions de Minuit, coll. « Le sens commun », 1979), © Les Éditions de Minuit. Reproduite pour présenter le livre sur l'étagère ; le texte n'est pas publié.
+- `livres/rendez-vous-avec-rama.jpg` : couverture de *Rendez-vous avec Rama*, Arthur C. Clarke (édition J'ai lu), © J'ai lu. Reproduite pour présenter le livre sur l'étagère ; le texte n'est pas publié.
 
 ## Polices
 

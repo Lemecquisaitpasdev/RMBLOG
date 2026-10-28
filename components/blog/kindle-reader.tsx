@@ -442,11 +442,19 @@ export function KindleReader({ book, backHref = "/livres" }: { book: ReaderBook;
                       {current.number ? <p className="liseuse-chapitre-numero">{current.number}</p> : null}
                       <h2>{current.title}</h2>
                     </header>
-                    {current.paragraphs?.map((paragraph, k) => (
-                      <p key={k} data-lettrine={k === 0 && paragraph.length > 120 && /^\p{L}/u.test(paragraph) ? "" : undefined}>
-                        {paragraph}
-                      </p>
-                    ))}
+                    {current.list ? (
+                      <ol className="liseuse-sommaire">
+                        {current.paragraphs?.map((item, k) => (
+                          <li key={k}>{item}</li>
+                        ))}
+                      </ol>
+                    ) : (
+                      current.paragraphs?.map((paragraph, k) => (
+                        <p key={k} data-lettrine={k === 0 && paragraph.length > 120 && /^\p{L}/u.test(paragraph) ? "" : undefined}>
+                          {paragraph}
+                        </p>
+                      ))
+                    )}
                   </>
                 )}
                 <span data-end className="block h-0" />

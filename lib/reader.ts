@@ -8,6 +8,8 @@ export type ReaderSection = {
   number?: string
   /** Paragraphes simples (livres du blog)… */
   paragraphs?: string[]
+  /** Les paragraphes forment une liste (un sommaire) : ni alinéa ni lettrine. */
+  list?: boolean
   /** …ou contenu déjà nettoyé (EPUB ouvert depuis l'appareil, voir lib/epub.ts). */
   html?: string
   /** Page de titre : couverture, titre et auteur. */
@@ -51,6 +53,7 @@ export function fromBook(book: Book): ReaderBook {
         title: chapter.title,
         number: book.edition === "Sommaire" ? undefined : String(i + 1),
         paragraphs: chapter.paragraphs,
+        list: chapter.list,
         chars: chapter.paragraphs.reduce((sum, paragraph) => sum + paragraph.length, 0),
       })),
     ],

@@ -124,7 +124,12 @@ function readPackage(archive: Unzipped) {
     opf,
     manifest,
     title: meta("title"),
-    author: all(opf, "creator").map((el) => el.textContent?.trim()).filter(Boolean).join(", ") || undefined,
+    // « Clarke,Arthur C. » (forme de classement) redevient « Arthur C. Clarke ».
+    author:
+      all(opf, "creator")
+        .map((el) => el.textContent?.trim().replace(/^([^,]+),\s*([^,]+)$/, "$2 $1"))
+        .filter(Boolean)
+        .join(", ") || undefined,
     lang: meta("language")?.slice(0, 2).toLowerCase(),
     coverPath: cover && cover.type.startsWith("image/") ? cover.path : undefined,
   }
@@ -281,7 +286,9 @@ export async function readEpub(file: Blob, key: string, fallbackTitle: string): 
       if (tag === "p" && headings && !lettrine && !quoted) {
         // La lettrine des débuts de chapitre : premier vrai paragraphe après le titre.
         const text = el.textContent?.trim() ?? ""
-        const wrapped = el.children.length === 1 && el.children[0].textContent?.trim() === text
+        // Une épigraphe tient souvent tout entière dans un gras ou un italique ; un simple <span> ne compte pas.
+        const only = el.children.length === 1 ? el.children[0] : null
+        const wrapped = !!only && ["b", "strong", "i", "em"].includes(only.localName) && only.textContent?.trim() === text
         if (text.length > 120 && !wrapped && /^\p{L}/u.test(text)) {
           extra = " data-lettrine"
           lettrine = true
