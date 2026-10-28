@@ -70,6 +70,8 @@ Recadrés en 4:5, sans métadonnées. Les crédits s'affichent aussi sous la lis
 
 - `livres/la-distinction.jpg` : couverture de *La Distinction*, Pierre Bourdieu (Les Éditions de Minuit, coll. « Le sens commun », 1979), © Les Éditions de Minuit. Reproduite pour présenter le livre sur l'étagère ; le texte n'est pas publié.
 - `livres/rendez-vous-avec-rama.jpg` : couverture de *Rendez-vous avec Rama*, Arthur C. Clarke (édition J'ai lu), © J'ai lu. Reproduite pour présenter le livre sur l'étagère ; le texte n'est pas publié.
+- `livres/belle-du-seigneur.jpg` : couverture de *Belle du Seigneur*, Albert Cohen (édition Penguin Twentieth-Century Classics ; tableau de Tamara de Lempicka), © leurs ayants droit. Reproduite pour présenter le livre sur l'étagère ; le texte n'est pas publié.
+- `livres/les-freres-karamazov.jpg` : couverture des *Frères Karamazov*, Fiodor Dostoïevski (édition Folio ; *Le Contemplateur*, Ivan Kramskoï, 1876, domaine public), © Gallimard pour la mise en page. Reproduite pour présenter le livre sur l'étagère ; le texte n'est pas publié.
 
 ## Polices
 

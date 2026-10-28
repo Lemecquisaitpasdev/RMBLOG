@@ -135,6 +135,44 @@ function readPackage(archive: Unzipped) {
   }
 }
 
+/**
+ * Les EPUB tirés d'un PDF gardent les numéros de page en paragraphes et coupent les phrases en bas
+ * de page : on retire les numéros, et là seulement, on recoud la phrase coupée avec la suivante.
+ */
+function repair(body: Element) {
+  let pageNumbers = 0
+  for (const p of all(body, "p")) {
+    const text = p.textContent?.trim() ?? ""
+    const media = all(p, "img").length + all(p, "image").length
+    if (/^\d{1,4}$/.test(text)) pageNumbers++
+    if (/^\d{1,4}$/.test(text) || (!text && !media)) p.remove()
+  }
+  if (!pageNumbers) return
+  for (const p of all(body, "p")) {
+    if (!p.parentNode) continue
+    let next = p.nextElementSibling
+    while (next?.localName === "p") {
+      const end = p.textContent?.trimEnd() ?? ""
+      const start = next.textContent?.trimStart() ?? ""
+      if (!end || /[.!?…:;»"”)\]]$/.test(end) || !/^\p{Ll}/u.test(start)) break
+      p.append(" ", ...Array.from(next.childNodes))
+      next.remove()
+      next = p.nextElementSibling
+    }
+  }
+}
+
+/** La langue annoncée par le fichier se trompe parfois (« EN » pour un roman français) : le texte tranche. */
+function guessLang(sample: string, declared?: string) {
+  const count = (re: RegExp) => sample.match(re)?.length ?? 0
+  const fr = count(/\b(le|la|les|des|une|est|que|qui|dans|pour|avec|elle|nous|vous)\b/gi)
+  const en = count(/\b(the|and|of|to|is|that|with|was|for|he|she|you)\b/gi)
+  const enough = sample.length / 400
+  if (fr > enough && fr > en * 2) return "fr"
+  if (en > enough && en > fr * 2) return "en"
+  return declared ?? "fr"
+}
+
 const imageType = (path: string) => IMAGE_TYPES[path.split(".").pop()?.toLowerCase() ?? ""]
 
 /** Titre, auteur et couverture : de quoi ranger le livre sur l'étagère de l'appareil. */
@@ -228,15 +266,31 @@ export async function readEpub(file: Blob, key: string, fallbackTitle: string): 
     if (navMap) walk(navMap, 0)
   }
 
+  // Table des matières trop maigre (un EPUB converti à la hâte) : on la refait avec les titres des chapitres.
+  const sparse = toc.length < 3 && spine.length > 5
+  const headings: ReaderTocEntry[] = []
+  let sample = ""
   const sections: ReaderSection[] = spine.map((item, index) => {
     const doc = parse(pkg.read(item.path) ?? "", /\.html?$/i.test(item.path) && !/xhtml/.test(item.type) ? "text/html" : "application/xhtml+xml")
     const body = doc.body ?? all(doc, "body")[0] ?? doc.documentElement
+    repair(body)
+    const heading = Array.from(body.getElementsByTagNameNS("*", "*"))
+      .find((el) => /^h[1-3]$/i.test(el.localName))
+      ?.textContent?.replace(/\s+/g, " ")
+      .trim()
+    const named = heading && heading.length <= 80 ? heading : undefined
+    const docTitle = all(doc, "title")[0]?.textContent?.trim()
+    if (named) headings.push({ label: named, depth: 0, section: index })
+    const text = (body.textContent ?? "").replace(/\s+/g, " ")
+    if (sample.length < 20000) sample += text.slice(0, 20000 - sample.length)
     const title =
       toc.find((entry) => entry.section === index)?.label ??
-      all(doc, "title")[0]?.textContent?.trim() ??
+      named ??
+      (docTitle && !/^(index|untitled|unknown|cover)$/i.test(docTitle) ? docTitle : undefined) ??
       `Partie ${index + 1}`
-    return { title, html: sanitize(body, item.path), chars: (body.textContent ?? "").replace(/\s+/g, " ").length }
+    return { title, html: sanitize(body, item.path), chars: text.length }
   })
+  if (sparse && headings.length > toc.length) toc.splice(0, toc.length, ...headings)
 
   function sanitize(body: Element, path: string) {
     let headings = 0
@@ -343,7 +397,7 @@ export async function readEpub(file: Blob, key: string, fallbackTitle: string): 
       title: pkg.title ?? fallbackTitle,
       author: pkg.author ?? "",
       cover: pkg.coverPath ? image(pkg.coverPath) : undefined,
-      lang: pkg.lang ?? "fr",
+      lang: guessLang(sample, pkg.lang),
       printPages: numericPages.length ? Math.max(...numericPages) : undefined,
       sections,
       toc,
