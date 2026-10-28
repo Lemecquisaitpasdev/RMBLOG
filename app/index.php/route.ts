@@ -13,6 +13,7 @@ const PAGES: Record<string, string> = {
   oeuvres: "/#oeuvres",
   contenus: "/#contenus",
   pensees: "/carnet-de-pensees",
+  livres: "/livres",
 }
 
 /**

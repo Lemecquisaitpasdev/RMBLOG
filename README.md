@@ -18,6 +18,7 @@ npm run lint
 - **Next.js 16** (App Router, Cache Components, Turbopack) + **React 19** + **TypeScript**
 - **Tailwind CSS 4** (configuration dans `app/globals.css`)
 - Structure **shadcn/ui** : `components.json`, alias `@/components/ui`, `@/lib/utils` (`cn`)
+- Polices de la liseuse via `next/font`, sous licence libre : Literata (à la place de Bookerly, la police d'Amazon qui ne se redistribue pas), Merriweather (à la place de Caecilia), Libre Baskerville, Atkinson Hyperlegible ; Georgia, Palatino et Helvetica viennent du système
 - Polices via `next/font` : Cormorant Garamond (le titre « Carnet libre », les onglets, les cartels), Archivo (logo), Permanent Marker (pinceau des articles), Playfair Display (italiques), Courier Prime ; Geist et Geist Mono auto-hébergées (`public/fonts`) pour le tableau de bord
 - **three.js** + `@react-three/fiber` + `@react-three/drei` pour la galerie 3D (chargés seulement à l'approche de la section)
 
@@ -31,6 +32,7 @@ npm run lint
 | `lib/posts.ts` | Les articles (blocs : paragraphe, intertitre, citation, liste, image, vidéo YouTube). `[texte](/lien)` et `**gras**` sont reconnus |
 | `lib/portfolio.ts` | Le portefeuille de 50 000 000 $ : la base, sa répartition (dollar, euro, SPY, QQQ, BTC, ETH, SOL) et les exemples de la démo (paiements, objectifs, flux) |
 | `lib/live-quotes.ts` | Les connecteurs de cours (Binance, Finnhub) : reconnexion automatique, un cours par seconde |
+| `lib/books.ts` | Mes livres : titre, auteur, couverture (`public/images/livres/`), édition (texte intégral ou extraits) et chapitres ; chacun s'ouvre dans la liseuse `/livres/<slug>` |
 | `lib/thoughts.ts` | Mon carnet de pensées : une entrée par jour (date, paragraphes), la plus récente en haut de `/carnet-de-pensees` |
 | `lib/monthly.ts` | Les contenus du mois sur la grande roue : le mois affiché et une entrée par contenu (image dans `public/images/mois/`, titre, type, date). Liste vide : six nacelles « à venir » |
 | `lib/dream.ts` | Les images de la galerie « Mon rêve, sûrement fabriqué par les autres » |
@@ -42,6 +44,7 @@ npm run lint
 ## Pages
 
 - `/` : en-tête collant (intro en Courier, logo qui tourne, les cinq onglets du carnet sur la tranche droite, qui se replient en tranche au bord de l'écran quand on descend), le titre « Carnet libre » au-dessus du bandeau 3D, un portrait en plein écran, « All about the Benjamins » en plein écran, la Kaaba en plein écran, le portefeuille de 50 000 000 $ au cours en direct, la galerie 3D « Mon rêve, sûrement fabriqué par les autres », « Mes jeux vidéo préférés » (la pochette choisie teinte le fond, la sélection défile seule), « Mes aspirations préférées » (les noms en grand, le portrait suit la souris), puis « Mes œuvres » (les tableaux sur une cimaise qui défile, en grand au clic, et le lecteur SoundCloud)
+- `/livres` : l'étagère de mes livres ; `/livres/<slug>` ouvre la liseuse plein écran façon Kindle (une page à la fois, toucher les bords, flèches ou glissé pour tourner ; menu « Aa » : police, taille, interligne, marges, alignement, thèmes blanc, sépia, vert et noir, luminosité et lumière chaude ; table des matières ; temps restant ; réglages et page retenus dans le navigateur)
 - `/carnet-de-pensees` : mon carnet de pensées, sur papier réglé, une entrée datée par jour d'écriture (sixième onglet)
 - `/articles/[slug]` : article avec chiffre au pinceau collant, métadonnées en Courier, boîte de dialogue « fin de l'article »
 - `/index.php?id=4`, `/index.php?page=kaaba` : les vieilles adresses redirigent vraiment
