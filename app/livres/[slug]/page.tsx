@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { ReaderClient } from "@/components/blog/reader-client"
 import { books, getBook } from "@/lib/books"
+import { fromBook } from "@/lib/reader"
 import { readerFonts } from "../fonts"
 
 export function generateStaticParams() {
@@ -27,7 +28,7 @@ export default async function Livre({ params }: PageProps<"/livres/[slug]">) {
   if (!book) notFound()
   return (
     <div className={readerFonts}>
-      <ReaderClient book={book} />
+      <ReaderClient book={fromBook(book)} />
     </div>
   )
 }

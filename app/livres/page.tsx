@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import { LocalShelf } from "@/components/blog/local-shelf"
 import { books } from "@/lib/books"
 
 export const metadata: Metadata = {
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/livres" },
 }
 
-/** L'étagère : les livres que j'ai aimés ; chacun s'ouvre dans la liseuse. */
+/** L'étagère : les livres que j'ai aimés, puis ceux ouverts depuis l'appareil ; chacun s'ouvre dans la liseuse. */
 export default function Livres() {
   return (
     <section id="livres" aria-labelledby="livres-titre" className="bg-paper px-4 pt-14 pb-24 text-black sm:px-8 lg:pt-20">
@@ -50,11 +51,9 @@ export default function Livres() {
               </li>
             ))}
           </ul>
-        ) : (
-          <p className="mt-12 max-w-[52ch] font-mono text-[13px] leading-[1.6] text-black/70">
-            L&apos;étagère attend son premier livre.
-          </p>
-        )}
+        ) : null}
+
+        <LocalShelf divided={books.length > 0} />
       </div>
     </section>
   )
